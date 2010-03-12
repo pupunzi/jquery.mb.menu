@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+  ~ jquery.mb.components
+  ~ Copyright (c) 2001-2010. Matteo Bicocchi (Pupunzi); Open lab srl, Firenze - Italy
+  ~ email: info@pupunzi.com
+  ~ site: http://pupunzi.com
+  ~
+  ~ Licences: MIT, GPL
+  ~ http://www.opensource.org/licenses/mit-license.php
+  ~ http://www.gnu.org/licenses/gpl.html
+  -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>MB_menu</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+"></script>
+	<script type="text/javascript" src="inc/jquery.metadata.js"></script>
+	<script type="text/javascript" src="inc/mbMenu.js"></script>
+	<script type="text/javascript" src="inc/styleswitch.js"></script>
+	<script type="text/javascript" src="inc/jquery.hoverIntent.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/menu.css" title="styles1"  media="screen" />
+	<link rel="alternate stylesheet" type="text/css" href="css/menu1.css" title="styles2" media="screen" />
+
+	<style type="text/css">
+		body .style a{
+			color:gray;
+			font-family:sans-serif;
+			font-size:13px;
+			text-decoration:none;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		/*
+		* DEFAULT OPTIONS
+		*
+			options: {
+			template:"yourMenuVoiceTemplate", --> the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
+			additionalData:"",								--> if you need additional data to pass to the ajax call
+			menuSelector:".menuContainer",		--> the css class for the menu container
+			menuWidth:150,										--> min menu width
+			openOnRight:false,								--> if the menu has to open on the right insted of bottom
+			iconPath:"ico/",									--> the path for the icons on the left of the menu voice
+			hasImages:true,										--> if the menuvoices have an icon (a space on the left is added for the icon)
+			fadeInTime:100,										--> time in milliseconds to fade in the menu once you roll over the root voice
+			fadeOutTime:200,									--> time in milliseconds to fade out the menu once you close the menu
+			menuTop:0,												--> top space from the menu voice caller
+			menuLeft:0,												--> left space from the menu voice caller
+			submenuTop:0,											--> top space from the submenu voice caller
+			submenuLeft:4,										--> left space from the submenu voice caller
+			opacity:1,												--> opacity of the menu
+			shadow:false,											--> if the menu has a shadow
+			shadowColor:"black",							--> the color of the shadow
+			shadowOpacity:.2,									--> the opacity of the shadow
+			openOnClick:true,									--> if the menu has to be opened by a click event (otherwise is opened by a hover event)
+			closeOnMouseOut:false,						--> if the menu has to be cloesed on mouse out
+			closeAfter:500,										--> time in millisecond to whait befor closing menu once you mouse out
+			minZindex:"auto", 								--> if set to "auto" the zIndex is automatically evaluate, otherwise it start from your settings ("auto" or int)
+			hoverInted:0, 										--> if you use jquery.hoverinted.js set this to time in milliseconds to delay the hover event (0= false)
+			onContextualMenu:function(o,e){} 	--> a function invoked once you call a contextual menu; it pass o (the menu you clicked on) and e (the event)
+		},
+		*/
+
+
+		$(function(){
+			$(".myMenu").buildMenu(
+			{
+				template:"menuVoices.html",
+				additionalData:"pippo=1",
+				menuWidth:200,
+				openOnRight:false,
+				menuSelector: ".menuContainer",
+        containment:"wrapper",
+				iconPath:"ico/",
+				hasImages:true,
+				fadeInTime:100,
+				fadeOutTime:300,
+				adjustLeft:2,
+				minZindex:"auto",
+				adjustTop:10,
+				opacity:.95,
+				shadow:true,
+				closeOnMouseOut:true,
+				closeAfter:1000
+			});
+
+		});
+
+
+		//this function get the id of the element that fires the context menu.	
+		function testForContextMenu(el){
+			if (!el) el= $.mbMenu.lastContextMenuEl;
+			alert("the ID of the element is:   "+$(el).attr("id"));
+		}
+
+	</script>
+
+</head>
+<body bgcolor="#ffffff">
+<div style="background:#FF6600 url(images/header_bgnd.jpg); padding:10px; color:white;font-size:16px; font-family:'Courier New', Courier, mono"> mbMenu</div>
+
+<div id="wrapper" style="width:980px;height:550px; border:1px dotted red; position:absolute; left:250px; top:100px">
+
+  <table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#EDEDED" ><!--style="position:absolute;bottom:0"-->
+	<tr>
+		<td width="180" height="33" style="padding:10px" class="style">
+			<a href="#" rel="styles1" class="styleswitch">style 1</a> /
+			<a href="#" rel="styles2" class="styleswitch">style 2</a>
+		</td>
+		<td valign="bottom">
+			<table  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="container">
+				<tr>
+					<td class="myMenu" align="right">
+
+						<!-- start horizontal menu -->
+
+						<table class="rootVoices" cellspacing='0' cellpadding='0' border='0'><tr>
+							<td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td>
+							<td class="rootVoice {menu: 'menu_2'}" >menu 2</td>
+							<td class="rootVoice {menu: 'menu_3'}" >menu 3</td>
+							<td class="rootVoice {menu: 'empty'}" onclick="window.open('http://www.open-lab.com','ww');">menu 4 empty</td>
+						</tr></table>
+
+						<!-- end horizontal menu -->
+
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+  
+</div>
+
+<!-- menues -->
+<div id="menu_1" class="menu">
+	<a rel="title" >title menu_1.1</a> <!-- menuvoice title-->
+	<a href="#" class="{img: 'ico_view.gif'}" >menu_1.1 (href target _self) </a> <!-- menuvoice with href-->
+	<a class="{action: 'document.title=(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
+	<a rel="separator"> </a> <!-- menuvoice separator-->
+	<a href="#" class="{action: 'document.title=(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
+	<a class="{action: 'document.title=(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
+</div>
+
+<div id="menu_2" class="menu">
+	<a rel="title" class="{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'}">menu_2.1 TITLE</a>
+	<a class="{action: 'document.title=(\'menu_2.2\')'}">menu_2.2</a>
+	<a class="{menu: 'sub_menu_1', img: 'icon_14.png'}">menu_2.3</a>
+	<a class="{menu: 'sub_menu_2', img: '24-tag-add.png'}">menu_2.4</a>
+	<a rel="separator"> </a>
+	<a class="{action: 'document.title=(\'menu_2.4\')'}">menu_2.5</a>
+</div>
+
+<div id="menu_3" class="menu">
+	<a rel="text" >
+		<img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
+		<br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
+	</a>
+	<a rel="separator"> </a>
+	<a class="{action: 'document.title=(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
+	<a id="aaa" class="{menu:'sub_menu_2'}"  >submenu</a>
+	<a class="{action: 'document.title=(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo</a>
+</div>
+
+<div id="sub_menu_1" class="menu">
+	<a class="{action: 'document.title=(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
+	<a rel="separator"> </a>
+	<a class="{menu:'menu_1'}">sub_menu_1.2</a>
+	<a class="{action: 'document.title=(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
+	<a class="{action: 'document.title=(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
+</div>
+
+<div id="sub_menu_2" class="menu">
+	<a class="{action: 'document.title=(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" >sub_menu_2.1</a>
+	<a class="{action: 'document.title=(\'sub_menu_2.2\')'}">sub_menu_2.2</a>
+	<a rel="separator"> </a>
+	<a class="{action: 'document.title=(\'sub_menu_2.3\')'}">sub_menu_2.3</a>
+	<a class="{action: 'document.title=(\'sub_menu_2.4\')'}" >sub_menu_2.4</a>
+</div>
+
+
+<div id="conext_menu_1" class="menu">
+	<a rel="text" >
+		<img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
+		<br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
+	</a>
+	<a rel="separator"> </a>
+	<a class="{action: 'testForContextMenu()',img: 'iconDone.png'}" >test: get opener ID</a>
+	<a id="bbb" class="{menu:'sub_menu_2'}" >submenu</a>
+	<a class="{action: 'document.title=(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
+</div>
+
+<!-- end menues -->
+
+
+<p>
+	<img
+		src="valid-xhtml10.png"
+		alt="Valid XHTML 1.0 Transitional" height="31" width="88" />
+</p>
+
+</body>
+</html>

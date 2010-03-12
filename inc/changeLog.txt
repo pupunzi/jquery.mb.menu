@@ -1,0 +1,108 @@
+jQuery.mb.menu
+
+2.7.6  IE6/7 bugfix:
+  added at line 377: if ($.browser.msie) menuVoice.css({maxWidth:op.options.menuWidth}) to constrain textbox into the menu width in IE :-;
+
+2.7.5  IE6/7 bugfix:
+  changed with --> minWidth at line 495 to let menu expand in line contnet exceed.
+  added at line 312 $(this.menuContainer).attr("id", "mb_"+m).hide(); to set an ID to the menucontainer.
+
+  2.7.4  feature:
+  set a local variable for $(opener.menuContainer).find(“#” + m + “_” + i); to improve performance in IE. (thanks to Sergey Vostretsov, svostretsov@gmail.com)
+
+2.7.3  feature:
+  changed the [cMenu] and [menu] selector to get the element itself on initialize. (thanks to Johan, johan.brichau@uclouvain.be)
+
+2.7.2  bugfix:
+  if property openOnClick was set to true and there was an empty root menu, once you get out from the empty root menu it didn't unselect his state.
+
+2.7.1
+  Managed menuvoices with A HREF attr.
+  Now when a menuvoice has an A HREF it remains an A HREF 
+
+2.7  Minor bugfix: (last trunk)
+  IE7 and 8 bug:
+  Fixed the wrong positioning of the contextualMenu if the page was scrolled.
+
+2.6.1
+  Major bugfix:
+  Firefox 3.5 Bug:
+  Opening the contextual menu, it suddenly closes.
+
+2.6  Minor bugfix:
+  Now if the menu height is more than the page height the menu doesn't reposition it to let you scroll all the menu voices.
+  Minor features:
+  added a new param containment to let the urer choose either the containment is the window (default) or any other element that contains the menu; that's usefull if you want the menu adapt it's position related something else that the window.
+  usage: containment:'your element ID' as param on the menu call function.
+
+2.3 Minor bugfix:
+  There was a problem with contextual menu position on long content pages (the scroll height and width weren't calculate). solved!
+
+2.2 Minor features:
+  added the support for jquery.hoverIntent.js also for submenu calls:
+  setted a new param submenuHoverIntent that axcept int as time in milliseconds for the delay befor shooting the hover event; if you set it to 0 (default) hoverIntent is not used.
+  !! important >> To use this param you have to incude the jquery.hoverIntent plug in in your page.
+
+2.0 Major features:
+  if you set openOnClick the menu'll close even when you click again on the root voice that invoked it.
+  added the support for jquery.hoverIntent.js:
+  setted a new param hoverIntent that axcept int as time in milliseconds for the delay befor shooting the hover event; if you set it to 0 (default) hoverIntent is not used.
+  !! important >> To use this param you have to incude the jquery.hoverIntent plug in in your page.
+
+1.6.0 Major bugfix:
+  Now, if closeOnMouseOut is setted, the menu will close when you leave the root menu voice even if you don't roll over the opened menu.
+  new feature:
+  you can define the fade time for opening and closing events by seting two new params:
+  fadeInTime:100, // default
+  fadeOutTime:200, // default
+  Now W3C comliant!:
+  As for the (mb)ContainerPlus, I used jquery.metadata.js and you can define menu paramiters without writing custom attributes on the tag, but writing them in the class attr. with a JSON sintax: <acolor:#008000;' style='color: rgb(0, 128, 0); '>{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'} '> menu_2.1 </a>
+  instead of:
+  <a  action= 'document.title=('menu_2.1')' img= 'icon_13.png' >menu_2.1</a>You can still use both sintax, but if you want to be w3c compliant than you nee the second one and you have to include jquery.metadata.js in your page.
+
+1.5.4 Major bugfix:
+  IE and contextualmenu bugfix;
+  fixed a code error that prevented IE to show the contextual menu.
+
+1.5.3 add a feature:
+  Now you can set to 'auto' the param minZindex and the component'll set automatically the highest zindex to the menu.
+
+1.5.1
+  Now you can have a root menu emty (with a direct lnk for example) that behave as the other menu in the same group.
+  <table cellspacing='0'cellpadding='0'border='0'><tr>
+  <td menu='menu_12>ajax menu 1</td>
+  <td menu='menu_2>menu 2</td>
+  <td menu='menu_3>menu 3</td>
+  <td menu='empty'
+  onclick='window.open ('http://www.open-lab.com','ww')'>
+  menu 4 empty
+  </td>
+  </tr></table>
+  fixed a bug on close of menu with closeOnMouseOut set to true and other menu istances in the same page.
+  Cleaned the param: rootMenuSelector it's not used anymore.
+  Minor bugfix.
+
+1.5
+  three new params:
+  closeOnMouseOut: false (default) // you can hide the menu onmouseout
+  closeAfter: 500 (default) // set the time to wait before closing after you exit the menu
+  onContextualMenu: function(o,e){} // a function to be called on contextualMenu
+  Now the onclick action is extended to the whole voice line.
+  If you set an href attribute, it's managed to the whole line and get the right target
+  When you set a contextualMenu, once you rightClick on the dom element an accessible variable is set ($.mbMenu.lastContextMenuEl);
+  so you can build your own function referring to every attribute of your object;
+  for example: if you have the same action on the menu voice for all the elements but you need the ID of the dom element you clicked on, you get it in this way:
+  $($.mbMenu.lastContextMenuEl).attr("id");
+  
+1.0.1
+  I just update the code with some bug fix:
+  IE bug for separator line
+  disabled menuline with href attribute
+  solved a bag in the case there's a href with a javascript as url (href='javascript:''); now it works!
+
+
+  ---------------------------------------------------------------------------------------------------------
+  ISSUE
+  ---------------------------------------------------------------------------------------------------------
+
+  * manage selected state of a voice.
