@@ -23,11 +23,56 @@
   <link rel="stylesheet" type="text/css" href="css/menu1.css" media="screen" />
 
   <style type="text/css">
-    body .style a{
-      color:gray;
+    body  a.style{
+      color:#AF3002;
       font-family:sans-serif;
       font-size:13px;
       text-decoration:none;
+    }
+  </style>
+  <script type="text/javascript">
+    $(function(){
+      if (self.location.href == top.location.href){
+        $("body").css({font:"normal 13px/16px 'trebuchet MS', verdana, sans-serif"});
+        var logo=$("<a href='http://pupunzi.com'><img id='logo' border='0' src='http://pupunzi.com/images/logo.png' alt='mb.ideas.repository' style='display:none;'></a>");
+        $("body").prepend(logo);
+        $("#logo").fadeIn();
+      }
+    });
+
+  </script>
+  <style type="text/css">
+
+    .wrapper{
+      font-family:Arial, Helvetica, sans-serif;
+      margin-top:50px;
+      margin-left:50px;
+    }
+
+    .wrapper h1{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:26px;
+    }
+    button{
+      padding:4px;
+      display:inline-block;
+      cursor:pointer;
+      font:12px/14px Arial, Helvetica, sans-serif;
+      color:#666;
+      border:1px solid #999;
+      background-color:#eee;
+      -moz-border-radius:10px;
+      -webkit-border-radius:10px;
+      -moz-box-shadow:#999 2px 0px 3px;
+      -webkit-box-shadow:#999 2px 0px 3px;
+      margin-bottom:4px;
+    }
+    button:hover{
+      color:#aaa;
+      background-color:#000;
+    }
+    :focus {
+      outline: 0;
     }
   </style>
 
@@ -154,147 +199,150 @@
 
 </head>
 <body bgcolor="#ffffff">
-<div style="background: url(images/header_bgnd.jpg); padding:10px; color:white;font-size:16px; font-family:'Courier New', Courier, mono"> mbMenu</div>
-<table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#EDEDED">
-  <tr>
-    <td width="180" height="33" style="padding:10px" class="style">
-    </td>
-    <td valign="bottom">
-      <table  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="container">
-        <tr>
-          <td class="myMenu" align="right">
+<div class="wrapper">
+  <h1>mb.menu.demo</h1>
 
-            <!-- start horizontal menu -->
+  <table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#EDEDED">
+    <tr>
+      <td width="180" height="33" style="padding:10px" class="style">
+      </td>
+      <td valign="bottom">
+        <table  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="container">
+          <tr>
+            <td class="myMenu" align="right">
 
-            <table class="rootVoices" cellspacing='0' cellpadding='0' border='0'><tr>
-              <td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td>
-              <td class="rootVoice {menu: 'menu_2'}" >menu 2</td>
-              <td class="rootVoice {menu: 'menu_3'}" >menu 3</td>
-              <td class="rootVoice {menu: 'empty'}" onclick="window.open('http://www.open-lab.com','ww');">menu 4 empty</td>
-            </tr></table>
+              <!-- start horizontal menu -->
 
-            <!-- end horizontal menu -->
+              <table class="rootVoices" cellspacing='0' cellpadding='0' border='0'><tr>
+                <td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td>
+                <td class="rootVoice {menu: 'menu_2'}" >menu 2</td>
+                <td class="rootVoice {menu: 'menu_3'}" >menu 3</td>
+                <td class="rootVoice {menu: 'empty'}" onclick="window.open('http://www.open-lab.com','ww');">menu 4 empty</td>
+              </tr></table>
 
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<div id="flashTest"><span onclick="loadFlash();" style="cursor:pointer"><br> click here to load a flash movie and test the menu over it!</span></div>
+              <!-- end horizontal menu -->
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<!-- start conextual menu  -->
-<a class="cmVoice {cMenu:'menu_12'}" id="pippo"> Contextual menu 1</a>&nbsp;&nbsp;&nbsp;<a class="cmVoice {cMenu:'conext_menu_1'}" id="pluto"> Contextual menu 2</a>
-<!-- end conextual menu  -->
-<br/>
-<br/>
-<br/>
-<br/>
-<div class="containerContent" style="float:right; margin-left:150px; margin-right:100px">
-  <input type="text" name="tuoTesto" value="explorer test" /><br/><br/>
-  <a href="#">Lorem ipsum dolor</a> sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet, nulla. In ornare tincidunt ante. Donec non sem. Morbi augue mi, accumsan non, nonummy ac, tempor eleifend, lacus. Nunc quam. Suspendisse tincidunt, purus sit amet adipiscing placerat, leo nunc interdum nulla, sed suscipit lacus felis ac enim. Maecenas nibh. Cras at tortor. Maecenas leo. Nullam eget tellus. Curabitur imperdiet dignissim sem. Nullam viverra viverra leo.
-  Mauris ac ipsum. Aenean eget magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam mollis ante id ipsum. Sed elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis lobortis rutrum felis. Vestibulum varius. In tincidunt turpis sed justo. Suspendisse potenti. Ut sodales risus non dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Proin lectus. Pellentesque vel arcu. Etiam sem lacus, molestie at, euismod non, lobortis vitae, mi.
-</div>
-
-<!-- start vertical menu -->
-<div class="vertMenu">
-  <table class="rootVoices vertical" cellspacing='0' cellpadding='0' border='0'>
-    <tr><td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td></tr>
-    <tr><td class="rootVoice {menu: 'menu_2'}" >menu 2</td></tr>
-    <tr><td class="rootVoice {menu: 'menu_3'}" >menu 3</td></tr>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
   </table>
-</div>
-<!-- end vertical menu -->
+  <div id="flashTest"><span onclick="loadFlash();" style="cursor:pointer"><br> click here to load a flash movie and test the menu over it!</span></div>
 
-<!-- menues -->
-<div id="menu_1" class="mbmenu">
-  <a rel="title" >title menu_1.1</a> <!-- menuvoice title-->
-  <a href="#" class="{img: 'ico_view.gif'}" >menu_1.1 (href target _self) </a> <!-- menuvoice with href-->
-  <a class="{action: 'document.title=(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
-  <a rel="separator"> </a> <!-- menuvoice separator-->
-  <a href="#" class="{action: 'document.title=(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
-  <a class="{action: 'document.title=(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
-</div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <!-- start conextual menu  -->
+  <a class="cmVoice {cMenu:'menu_12'}" id="pippo"> Contextual menu 1</a>&nbsp;&nbsp;&nbsp;<a class="cmVoice {cMenu:'conext_menu_1'}" id="pluto"> Contextual menu 2</a>
+  <!-- end conextual menu  -->
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div class="containerContent" style="float:right; margin-left:150px; margin-right:100px">
+    <input type="text" name="tuoTesto" value="explorer test" /><br/><br/>
+    <a class="style" href="#">Lorem ipsum dolor</a> sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet, nulla. In ornare tincidunt ante. Donec non sem. Morbi augue mi, accumsan non, nonummy ac, tempor eleifend, lacus. Nunc quam. Suspendisse tincidunt, purus sit amet adipiscing placerat, leo nunc interdum nulla, sed suscipit lacus felis ac enim. Maecenas nibh. Cras at tortor. Maecenas leo. Nullam eget tellus. Curabitur imperdiet dignissim sem. Nullam viverra viverra leo.
+    Mauris ac ipsum. Aenean eget magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam mollis ante id ipsum. Sed elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis lobortis rutrum felis. Vestibulum varius. In tincidunt turpis sed justo. Suspendisse potenti. Ut sodales risus non dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Proin lectus. Pellentesque vel arcu. Etiam sem lacus, molestie at, euismod non, lobortis vitae, mi.
+  </div>
 
-<div id="menu_2" class="mbmenu">
-  <a rel="title" class="{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'}">menu_2.1 TITLE</a>
-  <a class="{action: 'document.title=(\'menu_2.2\')'}">menu_2.2</a>
-  <a class="{menu: 'sub_menu_1', img: 'icon_14.png'}">menu_2.3</a>
-  <a class="{menu: 'sub_menu_2', img: '24-tag-add.png'}">menu_2.4</a>
-  <a rel="separator"> </a>
-  <a class="{action: 'document.title=(\'menu_2.4\')'}">menu_2.5</a>
-</div>
+  <!-- start vertical menu -->
+  <div class="vertMenu">
+    <table class="rootVoices vertical" cellspacing='0' cellpadding='0' border='0'>
+      <tr><td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td></tr>
+      <tr><td class="rootVoice {menu: 'menu_2'}" >menu 2</td></tr>
+      <tr><td class="rootVoice {menu: 'menu_3'}" >menu 3</td></tr>
+    </table>
+  </div>
+  <!-- end vertical menu -->
 
-<div id="menu_3" class="mbmenu" id="checkMenu">
-  <a rel="text" >
-    <form>
+  <!-- menues -->
+  <div id="menu_1" class="mbmenu">
+    <a rel="title" >title menu_1.1</a> <!-- menuvoice title-->
+    <a href="#" class="{img: 'ico_view.gif'}" >menu_1.1 (href target _self) </a> <!-- menuvoice with href-->
+    <a class="{action: 'document.title=(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
+    <a rel="separator"> </a> <!-- menuvoice separator-->
+    <a href="#" class="{action: 'document.title=(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
+    <a class="{action: 'document.title=(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
+  </div>
+
+  <div id="menu_2" class="mbmenu">
+    <a rel="title" class="{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'}">menu_2.1 TITLE</a>
+    <a class="{action: 'document.title=(\'menu_2.2\')'}">menu_2.2</a>
+    <a class="{menu: 'sub_menu_1', img: 'icon_14.png'}">menu_2.3</a>
+    <a class="{menu: 'sub_menu_2', img: '24-tag-add.png'}">menu_2.4</a>
+    <a rel="separator"> </a>
+    <a class="{action: 'document.title=(\'menu_2.4\')'}">menu_2.5</a>
+  </div>
+
+  <div id="menu_3" class="mbmenu" id="checkMenu">
+    <a rel="text" >
+      <form>
+        <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
+        <input id="myInput" type="text" name="tuoTesto" value="you can have input inside" />
+        <input type="button" name="tuoTesto" value="submit" onclick="$.fn.removeMbMenu($.mbMenu.options.actualOpenedMenu,true);" />
+        <table>
+          <tr><td><input type="checkbox" checked value="aaa"/></td><td>checkbox 1</td></tr>
+          <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
+          <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
+          <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
+        </table>
+        <br>
+        <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
+      </form>
+    </a>
+    <a rel="separator"> </a>
+    <a class="{action: 'document.title=(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
+    <a id="aaa" class="{menu:'sub_menu_2'}"  >submenu</a>
+    <a class="{action: 'document.title=(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo menu_3.4 con testo veramente molto lungo</a>
+  </div>
+
+  <div id="sub_menu_1" class="mbmenu">
+    <a class="{action: 'document.title=(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
+    <a rel="separator"> </a>
+    <a class="{menu:'menu_1'}">sub_menu_1.2</a>
+    <a class="{action: 'document.title=(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
+    <a class="{action: 'document.title=(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
+  </div>
+
+  <div id="sub_menu_2" class="mbmenu">
+    <a class="{action: 'document.title=(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" >sub_menu_2.1</a>
+    <a class="{action: 'document.title=(\'sub_menu_2.2\')'}">sub_menu_2.2</a>
+    <a rel="separator"> </a>
+    <a class="{action: 'document.title=(\'sub_menu_2.3\')'}">sub_menu_2.3</a>
+    <a class="{action: 'document.title=(\'sub_menu_2.4\')'}" >sub_menu_2.4</a>
+  </div>
+
+  <div id="conext_menu_1" class="mbmenu">
+    <a rel="text" >
       <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
-      <input id="myInput" type="text" name="tuoTesto" value="you can have input inside" />
-      <input type="button" name="tuoTesto" value="submit" onclick="$.fn.removeMbMenu($.mbMenu.options.actualOpenedMenu,true);" />
-      <table>
-        <tr><td><input type="checkbox" checked value="aaa"/></td><td>checkbox 1</td></tr>
-        <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
-        <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
-        <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
-      </table>
-      <br>
       <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
-    </form>
-  </a>
-  <a rel="separator"> </a>
-  <a class="{action: 'document.title=(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
-  <a id="aaa" class="{menu:'sub_menu_2'}"  >submenu</a>
-  <a class="{action: 'document.title=(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo menu_3.4 con testo veramente molto lungo</a>
+    </a>
+    <a rel="separator"> </a>
+    <a class="{action: 'testForContextMenu()',img: 'iconDone.png'}" >test: get opener ID</a>
+    <a id="bbb" class="{menu:'sub_menu_2'}" >submenu</a>
+    <a class="{action: 'document.title=(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
+  </div>
+
+  <!-- end menues -->
+
+  <p>
+    <img
+            src="valid-xhtml10.png"
+            alt="Valid XHTML 1.0 Transitional" height="31" width="88" />
+  </p>
+  <!--
+  <div style="padding:6px;position:absolute;z-index:1000; bottom:10px; right:10px; -webkit-border-radius:7px;-moz-border-radius:7px;border:2px solid white; background:#000;text-align:center;color:white;">
+    Please support my work<br>with a free donation!<br><br>
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=V6ZS8JPMZC446&amp;lc=GB&amp;item_name=mb%2eideas&amp;item_number=MBIDEAS&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHosted">
+      <img alt="PayPal" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0">
+    </a>
+  </div>-->
+
+  <span onclick="$.fn.removeMbMenu();">closeMenu</span>
 </div>
-
-<div id="sub_menu_1" class="mbmenu">
-  <a class="{action: 'document.title=(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
-  <a rel="separator"> </a>
-  <a class="{menu:'menu_1'}">sub_menu_1.2</a>
-  <a class="{action: 'document.title=(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
-  <a class="{action: 'document.title=(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
-</div>
-
-<div id="sub_menu_2" class="mbmenu">
-  <a class="{action: 'document.title=(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" >sub_menu_2.1</a>
-  <a class="{action: 'document.title=(\'sub_menu_2.2\')'}">sub_menu_2.2</a>
-  <a rel="separator"> </a>
-  <a class="{action: 'document.title=(\'sub_menu_2.3\')'}">sub_menu_2.3</a>
-  <a class="{action: 'document.title=(\'sub_menu_2.4\')'}" >sub_menu_2.4</a>
-</div>
-
-<div id="conext_menu_1" class="mbmenu">
-  <a rel="text" >
-    <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
-    <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
-  </a>
-  <a rel="separator"> </a>
-  <a class="{action: 'testForContextMenu()',img: 'iconDone.png'}" >test: get opener ID</a>
-  <a id="bbb" class="{menu:'sub_menu_2'}" >submenu</a>
-  <a class="{action: 'document.title=(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
-</div>
-
-<!-- end menues -->
-
-<p>
-  <img
-          src="valid-xhtml10.png"
-          alt="Valid XHTML 1.0 Transitional" height="31" width="88" />
-</p>
-
-<div style="padding:6px;position:absolute;z-index:1000; bottom:10px; right:10px; -webkit-border-radius:7px;-moz-border-radius:7px;border:2px solid white; background:#000;text-align:center;color:white;">
-  Please support my work<br>with a free donation!<br><br>
-  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=V6ZS8JPMZC446&amp;lc=GB&amp;item_name=mb%2eideas&amp;item_number=MBIDEAS&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHosted">
-    <img alt="PayPal" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0">
-  </a>
-</div>
-
-<span onclick="$.fn.removeMbMenu();">closeMenu</span>
 </body>
 </html>
