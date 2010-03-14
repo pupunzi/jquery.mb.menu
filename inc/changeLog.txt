@@ -2,6 +2,7 @@ jQuery.mb.menu
 
 2.7.6  IE6/7 bugfix:
   added at line 377: if ($.browser.msie) menuVoice.css({maxWidth:op.options.menuWidth}) to constrain textbox into the menu width in IE :-;
+  added $.fn.removeMbMenu() to close any opened manu from an external or internal link.
 
 2.7.5  IE6/7 bugfix:
   changed with --> minWidth at line 495 to let menu expand in line contnet exceed.

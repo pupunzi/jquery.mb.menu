@@ -26,7 +26,7 @@
       template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
       additionalData:"",
       menuSelector:".menuContainer",
-      menuWidth:150,
+      menuWidth:200,
       openOnRight:false,
       containment:"window",
       iconPath:"ico/",
