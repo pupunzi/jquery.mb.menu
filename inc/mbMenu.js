@@ -314,7 +314,7 @@
         });
       }
       $(this.menuContainer).attr("id", "mb_"+m).hide();
-      this.voices= $("#"+m).find("a").clone();
+      this.voices= $("#"+m).find("a").clone(true);
 
 
       if (op.options.shadow) {
