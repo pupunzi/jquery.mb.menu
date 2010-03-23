@@ -459,7 +459,7 @@
           if(isDisabled || isTitle || isText){
             $(this).removeAttr("href");
             menuLine.bind(mouseOver,function(){
-              $(document).unbind("click");
+//              $(document).unbind("click");
               if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
               if(opener.menuContainer.actualSubmenu){
                 $(opener.menu).find(".menuDiv").remove();
@@ -598,7 +598,7 @@
         else $(op.rootMenu).remove();
         op.rootMenu=false;
         op.clicked=false;
-        $(document).unbind("click");
+//        $(document).unbind("click");
       }
     },
 
