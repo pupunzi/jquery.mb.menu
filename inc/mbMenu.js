@@ -109,7 +109,10 @@
                 }
                 $(this).removeMbMenu(thisMenu);
               }
-              return false;
+
+              $(document).unbind("click.closeMbMneu");
+
+              //return;
             });
           }
           var mouseOver=$.browser.msie?"mouseenter":"mouseover";
@@ -138,7 +141,7 @@
               }
               if(!thisMenu.clicked)
                 $(this).removeClass("selected");
-              $(document).one("click",function(){
+              $(document).one("click.closeMbMneu",function(){
                  if ($(this).attr("menu")=="empty"){
                    clearTimeout(thisMenu.clearClicked);
                    return;
@@ -356,7 +359,7 @@
         }
         var line="<table id='"+m+"_"+i+"' class='line"+(isTitle?" title":"")+"' cellspacing='0' cellpadding='0' border='0' style='width:100%;' width='100%'><tr>"+imgPlace+"<td class='voice' nowrap></td></tr></table>";
         if(isSeparator)
-          line="<div class='separator' style='width:100%; display:inline-block'><img src='"+op.options.iconPath+"blank.gif' width='1' height='1'></div>";
+          line="<p class='separator' style='width:100%;'></p>";
         if(isText)
           line="<div style='width:100%; display:table' class='line' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
@@ -459,7 +462,6 @@
           if(isDisabled || isTitle || isText){
             $(this).removeAttr("href");
             menuLine.bind(mouseOver,function(){
-//              $(document).unbind("click");
               if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
               if(opener.menuContainer.actualSubmenu){
                 $(opener.menu).find(".menuDiv").remove();
@@ -588,6 +590,7 @@
     },
     removeMbMenu: function(op,fade){
       if(!op)op=$.mbMenu.options.actualMenuOpener;
+      if(!op) return;
       if (op.rootMenu) {
         $(op.actualOpenedMenu)
                 .removeAttr("isOpen")
@@ -598,7 +601,6 @@
         else $(op.rootMenu).remove();
         op.rootMenu=false;
         op.clicked=false;
-//        $(document).unbind("click");
       }
     },
 
