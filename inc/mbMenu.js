@@ -11,8 +11,8 @@
 
 /*
  * Name:jquery.mb.menu
- * Version: 2.7.6
-*/
+ * Version: 2.8.0
+ */
 
 // to get the element that is fireing a contextMenu event you have $.mbMenu.lastContextMenuEl that returns an object.
 
@@ -20,7 +20,7 @@
   $.mbMenu = {
     name:"mbMenu",
     author:"Matteo Bicocchi",
-    version:"2.7.6",
+    version:"2.8.0",
     actualMenuOpener:false,
     options: {
       template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
@@ -110,7 +110,7 @@
                 $(this).removeMbMenu(thisMenu);
               }
 
-              $(document).unbind("click.closeMbMneu");
+              $(document).unbind("click.closeMbMenu");
 
               //return;
             });
@@ -134,18 +134,18 @@
             });
             $(thisMenu.menuvoice).bind(mouseOut,function(){
               if (closeOnMouseOut)
-                $.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(thisMenu,true);},$(root)[0].options.closeAfter);
+                $.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(thisMenu,true);$(document).unbind("click.closeMbMenu");},$(root)[0].options.closeAfter);
               if ($(this).attr("menu")=="empty"){
                 $(this).removeClass("selected");
                 thisMenu.clearClicked= setTimeout(function(){thisMenu.rootMenu=false;thisMenu.clicked=false;},$(root)[0].options.closeAfter);
               }
               if(!thisMenu.clicked)
                 $(this).removeClass("selected");
-              $(document).one("click.closeMbMneu",function(){
-                 if ($(this).attr("menu")=="empty"){
-                   clearTimeout(thisMenu.clearClicked);
-                   return;
-                 }
+              $(document).one("click.closeMbMenu",function(){
+                if ($(this).attr("menu")=="empty"){
+                  clearTimeout(thisMenu.clearClicked);
+                  return;
+                }
                 $(this).removeClass("selected");
                 $(this).removeMbMenu(thisMenu,true);
               });
@@ -172,21 +172,22 @@
               timeout: 0,
               out:function(){
                 if (closeOnMouseOut)
-                  $.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(thisMenu,true);},$(root)[0].options.closeAfter);
+                  $.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(thisMenu,true);$(document).unbind("click.closeMbMenu");},$(root)[0].options.closeAfter);
                 if ($(this).attr("menu")=="empty"){
                   $(this).removeClass("selected");
                   thisMenu.clearClicked= setTimeout(function(){thisMenu.rootMenu=false;thisMenu.clicked=false;},$(root)[0].options.closeAfter);
                 }
                 if(!thisMenu.clicked)
                   $(this).removeClass("selected");
-                $(document).one("click",function(){
-                  if ($(this).attr("menu")=="empty"){
-                    clearTimeout(thisMenu.clearClicked);
-                    return;
-                  }
-                  $(this).removeClass("selected");
-                  $(this).removeMbMenu(thisMenu,true);
-                });
+                if(!closeOnMouseOut)
+                  $(document).one("click.closeMbMenu",function(){
+                    if ($(this).attr("menu")=="empty"){
+                      clearTimeout(thisMenu.clearClicked);
+                      return;
+                    }
+                    $(this).removeClass("selected");
+                    $(this).removeMbMenu(thisMenu,true);
+                  });
               }
             });
           }
@@ -496,7 +497,7 @@
         });
         $(opener.menuContainer).bind("mouseleave",function(){
           var menuToRemove=$.mbMenu.options.actualMenuOpener;
-          $.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(menuToRemove,true);},$(op)[0].options.closeAfter);
+          $.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(menuToRemove,true);$(document).unbind("click.closeMbMenu");},$(op)[0].options.closeAfter);
         });
       }
 
@@ -537,7 +538,7 @@
 
       if (!type || type=="cm") op.rootMenu=this.menu;
       $(this.menuContainer).bind(mouseOut,function(){
-        $(document).one("click",function(){$(document).removeMbMenu(op,true);});
+        $(document).one("click.closeMbMenu",function(){$(document).removeMbMenu(op,true);});
       });
 
       if (op.options.fadeInTime>0) $(this.menuContainer).fadeIn(op.options.fadeInTime);
