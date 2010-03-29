@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--
+  ~ jquery.mb.components
+  ~ Copyright (c) 2001-2010. Matteo Bicocchi (Pupunzi); Open lab srl, Firenze - Italy
+  ~ email: info@pupunzi.com
+  ~ site: http://pupunzi.com
+  ~
+  ~ Licences: MIT, GPL
+  ~ http://www.opensource.org/licenses/mit-license.php
+  ~ http://www.gnu.org/licenses/gpl.html
+  -->
+
+<html>
+<head>
+<title>mbMenu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="inc/jquery.metadata.js"></script>
+<script type="text/javascript" src="inc/jquery.hoverIntent.min.js"></script>
+<script type="text/javascript" src="inc/jquery.mb.flipText.min.js"></script>
+<script type="text/javascript" src="inc/mbMenu.js"></script>
+<script type="text/javascript" src="inc/mbExtruder.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/menu1.css" media="screen" />
+<link href="css/mbExtruder1.css" media="all" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+  $(function(){
+    if (self.location.href == top.location.href){
+      $("body").css({font:"normal 13px/16px 'trebuchet MS', verdana, sans-serif"});
+      var logo=$("<a href='http://pupunzi.com'><img id='logo' border='0' src='http://pupunzi.com/images/logo.png' alt='mb.ideas.repository' style='display:none;'></a>");
+      $("body").prepend(logo);
+      $("#logo").fadeIn();
+    }
+  });
+
+</script>
+<style type="text/css">
+
+  body{
+    font-family:Arial, Helvetica, sans-serif;
+    margin:10px;
+  }
+  .wrapper{
+    position:relative;
+    font-family:Arial, Helvetica, sans-serif;
+    padding-top:90px;
+    padding-left:50px;
+    width:80%;
+    margin:auto
+  }
+  .wrapper .text{
+    font-family:Arial, Helvetica, sans-serif;
+    padding-top:50px;
+  }
+  .wrapper h1{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:26px;
+  }
+  .longText{
+    margin-top:20px;
+    width:600px;
+    font:18px/24px Arial, Helvetica, sans-serif;
+    color:gray;
+  }
+  span.btn{
+    padding:10px;
+    display:inline-block;
+    cursor:pointer;
+    font:12px/14px Arial, Helvetica, sans-serif;
+    color:#aaa;
+    background-color:#eee;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-box-shadow:#999 2px 0px 3px;
+    -webkit-box-shadow:#999 2px 0px 3px;
+  }
+  span.btn:hover{
+    background-color:#000;
+  }
+
+    /*
+    custom style for extruder
+    */
+
+  .extruder.left.a .flap{
+    font-size:18px;
+    color:white;
+    top:0;
+    padding:10px 0px 10px 10px;
+    background:#772B14;
+    width:30px;
+    position:absolute;
+    right:0px;
+    -moz-border-radius:0 10px 10px 0;
+    -webkit-border-top-right-radius:10px;
+    -webkit-border-bottom-right-radius:10px;
+    -moz-box-shadow:#666 2px 0px 3px;
+    -webkit-box-shadow:#666 2px 0px 3px;
+  }
+
+  .extruder.left.a .content{
+    border-right:3px solid #772B14;
+  }
+
+  .extruder.top .optionsPanel .panelVoice a:hover{
+    color:#fff;
+    background: url("elements/black_op_30.png");
+    border-bottom:1px solid #000;
+  }
+  .extruder.top .optionsPanel .panelVoice a{
+    border-bottom:1px solid #000;
+  }
+
+  .extruder.left.a .flap .flapLabel{
+    background:#772B14;
+  }
+
+  .wrapper{
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top:50px;
+    margin-left:50px;
+  }
+
+  .wrapper h1{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:26px;
+  }
+  button{
+    padding:4px;
+    display:inline-block;
+    cursor:pointer;
+    font:12px/14px Arial, Helvetica, sans-serif;
+    color:#666;
+    border:1px solid #999;
+    background-color:#eee;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-box-shadow:#999 2px 0px 3px;
+    -webkit-box-shadow:#999 2px 0px 3px;
+    margin-bottom:4px;
+  }
+  button:hover{
+    color:#aaa;
+    background-color:#000;
+  }
+  :focus {
+    outline: 0;
+  }
+</style>
+
+<script type="text/javascript">
+
+  $(function(){
+
+    $(".myMenu").buildMenu(
+    {
+      template:"menuVoices.html",
+      additionalData:"pippo=1",
+      menuWidth:200,
+      openOnRight:false,
+      menuSelector: ".menuContainer",
+      iconPath:"ico/",
+      hasImages:true,
+      fadeInTime:100,
+      fadeOutTime:300,
+      adjustLeft:2,
+      minZindex:"auto",
+      adjustTop:10,
+      opacity:.95,
+      shadow:false,
+      shadowColor:"#ccc",
+      hoverIntent:0,
+      openOnClick:true,
+      closeOnMouseOut:true,
+      closeAfter:1000,
+      submenuHoverIntent:200
+    });
+
+    $(".vertMenu").buildMenu(
+    {
+      template:"menuVoices.html",
+      menuWidth:170,
+      openOnRight:true,
+      menuSelector: ".menuContainer",
+      iconPath:"ico/",
+      hasImages:true,
+      fadeInTime:200,
+      fadeOutTime:200,
+      adjustLeft:0,
+      adjustTop:0,
+      opacity:.95,
+      openOnClick:false,
+      minZindex:200,
+      shadow:false,
+      hoverIntent:300,
+      submenuHoverIntent:300,
+      closeOnMouseOut:true
+    });
+
+    $(document).buildContextualMenu(
+    {
+      template:"menuVoices.html",
+      menuWidth:200,
+      overflow:2,
+      menuSelector: ".menuContainer",
+      iconPath:"ico/",
+      hasImages:false,
+      fadeInTime:100,
+      fadeOutTime:100,
+      adjustLeft:0,
+      adjustTop:0,
+      opacity:.99,
+      closeOnMouseOut:false,
+      onContextualMenu:function(o,e){}, //params: o,e
+      shadow:false
+    });
+
+
+    $("#extruderTop").buildMbExtruder({
+      positionFixed:false,
+      width:350,
+      extruderOpacity:1,
+      autoCloseTime:4000,
+      hidePanelsOnClose:false,
+      onExtOpen:function(){},
+      onExtContentLoad:function(){},
+      onExtClose:function(){}
+    });
+
+    $("#extruderLeft").buildMbExtruder({
+      position:"left",
+      width:300,
+      extruderOpacity:.8,
+      onExtOpen:function(){},
+      onExtContentLoad:function(){},
+      onExtClose:function(){}
+    });
+
+
+
+  })
+
+</script>
+
+</head>
+<body bgcolor="#ffffff">
+
+<div id="extruderTop" class="{title:'extruder top', url:'parts/extruderTop.html'}"></div>
+<div id="extruderLeft" class="{title:'Our network', url:'parts/extruderLeft.html'}"></div>
+
+<div class="wrapper">
+  <h1>(mb.menu + mb.extruder) demo</h1>
+
+  <table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#EDEDED">
+    <tr>
+      <td width="180" height="33" style="padding:10px" class="style">
+      </td>
+      <td valign="bottom">
+        <table  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="container">
+          <tr>
+            <td class="myMenu" align="right">
+
+              <!-- start horizontal menu -->
+
+              <table class="rootVoices" cellspacing='0' cellpadding='0' border='0'><tr>
+                <td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td>
+                <td class="rootVoice {menu: 'menu_2'}" >menu 2</td>
+                <td class="rootVoice {menu: 'menu_3'}" >menu 3</td>
+                <!--<td class="rootVoice {menu: 'empty'}" onclick="window.open('http://www.open-lab.com','ww');">menu 4 empty</td>-->
+              </tr></table>
+
+              <!-- end horizontal menu -->
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+  <span class="btn" onclick="$.fn.removeMbMenu();">close menu</span>
+  <span class="btn" onclick="$('#extruderTop').openMbExtruder(true);setTimeout(function(){$('#top2').disableExtruderVoice();},400);"><a style="color:red">disable</a> second voice of mbExtruder Top</span>
+  <span class="btn" onclick="setTimeout(function(){$('#top2').enableExtruderVoice();},400);"><a style="color:green">enable</a> second voice of mbExtruder Top</span>
+  <span class="btn" onclick="$('#extruderLeft').openMbExtruder(true);">open "Our network"</span>
+  <span class="btn" onclick="$('#extruderLeft').closeMbExtruder();">close "Our network"</span>
+  <br>
+  <br>
+  <!-- start conextual menu  -->
+  <a class="cmVoice {cMenu:'menu_12'}" id="pippo"> Contextual menu 1</a>&nbsp;&nbsp;&nbsp;<a class="cmVoice {cMenu:'conext_menu_1'}" id="pluto"> Contextual menu 2</a>
+  <!-- end conextual menu  -->
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div class="containerContent" style="float:right; margin-left:150px; margin-right:100px">
+    <input type="text" name="tuoTesto" value="explorer test" /><br/><br/>
+    <a class="style" href="#">Lorem ipsum dolor</a> sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet, nulla. In ornare tincidunt ante. Donec non sem. Morbi augue mi, accumsan non, nonummy ac, tempor eleifend, lacus. Nunc quam. Suspendisse tincidunt, purus sit amet adipiscing placerat, leo nunc interdum nulla, sed suscipit lacus felis ac enim. Maecenas nibh. Cras at tortor. Maecenas leo. Nullam eget tellus. Curabitur imperdiet dignissim sem. Nullam viverra viverra leo.
+    Mauris ac ipsum. Aenean eget magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam mollis ante id ipsum. Sed elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis lobortis rutrum felis. Vestibulum varius. In tincidunt turpis sed justo. Suspendisse potenti. Ut sodales risus non dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Proin lectus. Pellentesque vel arcu. Etiam sem lacus, molestie at, euismod non, lobortis vitae, mi.
+  </div>
+
+  <!-- start vertical menu -->
+  <div class="vertMenu">
+    <table class="rootVoices vertical" cellspacing='0' cellpadding='0' border='0'>
+      <tr><td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td></tr>
+      <tr><td class="rootVoice {menu: 'menu_2'}" >menu 2</td></tr>
+      <tr><td class="rootVoice {menu: 'menu_3'}" >menu 3</td></tr>
+    </table>
+  </div>
+  <!-- end vertical menu -->
+
+  <!-- menues -->
+  <div id="menu_1" class="mbmenu">
+    <a rel="title" >title menu_1.1</a> <!-- menuvoice title-->
+    <a href="#" class="{img: 'ico_view.gif'}" >menu_1.1 (href target _self) </a> <!-- menuvoice with href-->
+    <a class="{action: 'document.title=(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
+    <a rel="separator"> </a> <!-- menuvoice separator-->
+    <a href="#" class="{action: 'document.title=(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
+    <a class="{action: 'document.title=(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
+  </div>
+
+  <div id="menu_2" class="mbmenu">
+    <a rel="title" class="{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'}">menu_2.1 TITLE</a>
+    <a class="{action: 'document.title=(\'menu_2.2\')'}">menu_2.2</a>
+    <a class="{menu: 'sub_menu_1', img: 'icon_14.png'}">menu_2.3</a>
+    <a class="{menu: 'sub_menu_2', img: '24-tag-add.png'}">menu_2.4</a>
+    <a rel="separator"> </a>
+    <a class="{action: 'document.title=(\'menu_2.4\')'}">menu_2.5</a>
+  </div>
+
+  <div id="menu_3" class="mbmenu" id="checkMenu">
+    <a rel="text" >
+      <form>
+        <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
+        <input id="myInput" type="text" name="tuoTesto" value="you can have input inside" />
+        <input type="button" name="tuoTesto" value="submit" onclick="$.fn.removeMbMenu($.mbMenu.options.actualOpenedMenu,true);" />
+        <table>
+          <tr><td><input type="checkbox" checked value="aaa"/></td><td>checkbox 1</td></tr>
+          <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
+          <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
+          <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
+        </table>
+        <br>
+        <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
+      </form>
+    </a>
+    <a rel="separator"> </a>
+    <a class="{action: 'document.title=(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
+    <a id="aaa" class="{menu:'sub_menu_2'}"  >submenu</a>
+    <a class="{action: 'document.title=(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo menu_3.4 con testo veramente molto lungo</a>
+  </div>
+
+  <div id="sub_menu_1" class="mbmenu">
+    <a class="{action: 'document.title=(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
+    <a rel="separator"> </a>
+    <a class="{menu:'menu_1'}">sub_menu_1.2</a>
+    <a class="{action: 'document.title=(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
+    <a class="{action: 'document.title=(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
+  </div>
+
+  <div id="sub_menu_2" class="mbmenu">
+    <a class="{action: 'document.title=(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" >sub_menu_2.1</a>
+    <a class="{action: 'document.title=(\'sub_menu_2.2\')'}">sub_menu_2.2</a>
+    <a rel="separator"> </a>
+    <a class="{action: 'document.title=(\'sub_menu_2.3\')'}">sub_menu_2.3</a>
+    <a class="{action: 'document.title=(\'sub_menu_2.4\')'}" >sub_menu_2.4</a>
+  </div>
+
+  <div id="conext_menu_1" class="mbmenu">
+    <a rel="text" >
+      <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
+      <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
+    </a>
+    <a rel="separator"> </a>
+    <a class="{action: 'testForContextMenu()',img: 'iconDone.png'}" >test: get opener ID</a>
+    <a id="bbb" class="{menu:'sub_menu_2'}" >submenu</a>
+    <a class="{action: 'document.title=(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
+  </div>
+
+  <!-- end menues -->
+  
+</div>
+</body>
+</html>

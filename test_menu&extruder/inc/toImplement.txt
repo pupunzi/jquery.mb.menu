@@ -1,0 +1,10 @@
+1. (DONE)
+.menuContainer .selected td a{
+color:#000;
+text-shadow:#fff 2px 2px 1px;
+display:block;
+}
+
+
+2.
+add disble to rootvoices.
