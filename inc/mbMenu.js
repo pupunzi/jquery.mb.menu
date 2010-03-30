@@ -477,10 +477,10 @@
                 $(voice).attr("action",$(voice).attr("href").replace("javascript:",""));
               }
               var link=$(voice).attr("action")?$(voice).attr("action"):"window.open('"+$(voice).attr("href")+"', '"+target+"')";
-              if (!$(voice).attr("href") || ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1)){
+              if ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1){
                 $(voice).removeAttr("href");
-                eval(link);
               }
+              eval(link);
               $(this).removeMbMenu(op,true);
             }else if($(voice).attr("menu"))
               return false;
