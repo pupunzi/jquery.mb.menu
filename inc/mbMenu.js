@@ -480,7 +480,7 @@
               $(voice).removeAttr("href");
               eval(link);
               $(this).removeMbMenu(op,true);
-            }else if($(voice).attr("menu"))
+            }
               return false;
           });
         }
