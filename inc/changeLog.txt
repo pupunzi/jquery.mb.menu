@@ -1,5 +1,10 @@
 jQuery.mb.menu
 
+2.8.1  IE6/7 bugfix:
+  modified CSS for webkit compliance
+  better defined the click event on the menuline.
+  
+
 2.7.6  IE6/7 bugfix:
   added at line 377: if ($.browser.msie) menuVoice.css({maxWidth:op.options.menuWidth}) to constrain textbox into the menu width in IE :-;
   added $.fn.removeMbMenu() to close any opened manu from an external or internal link.

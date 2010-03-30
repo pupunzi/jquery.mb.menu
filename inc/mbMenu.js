@@ -26,7 +26,7 @@
       template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
       additionalData:"",
       menuSelector:".menuContainer",
-      menuWidth:200,
+      menuWidth:400,
       openOnRight:false,
       containment:"window",
       iconPath:"ico/",
@@ -288,7 +288,7 @@
       }
 
       var menuClass= op.options.menuSelector.replace(".","");
-      where.append("<div class='menuDiv'><div class='"+menuClass+"' style='display:table'></div></div>");
+      where.append("<div class='menuDiv'><div class='"+menuClass+"'></div></div>");
       this.menu  = where.find(".menuDiv");
       $(this.menu).css({width:0, height:0});
       if (op.options.minZindex!="auto"){
