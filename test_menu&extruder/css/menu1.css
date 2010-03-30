@@ -1,3 +1,11 @@
+/*
+* jQuery.mb.components: jquery.mb.menu
+* © 2001 - 2010 Matteo Bicocchi (pupunzi), Open Lab
+*
+*/
+
+@charset "UTF-8";
+
 body{
 	font-family:"Lucida Sans Unicode","Lucida Grande",Helvetica,Arial,sans-serif;
 	font-size:14px;
@@ -69,7 +77,7 @@ body{
 /**/
 
 .menuContainer{
-  overflow:hidden;
+  /*overflow:hidden;*/
   position:absolute;
 	background-color:gray;
 	padding:0;
@@ -134,7 +142,7 @@ body{
 .menuContainer .selected td a{
 	color:#000;
   text-shadow:#fff 2px 2px 1px;
-  display:block;  
+  display:block;
 }
 .menuContainer .disabled td, .menuContainer .disabled td a {
 	color: #cccccc;
