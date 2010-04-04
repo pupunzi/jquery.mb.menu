@@ -53,7 +53,7 @@
       return this.each (function ()
       {
         var thisMenu =this;
-        thisMenu.id = !this.id ? "menu_"+Math.floor (Math.random () * 1000): this.id;
+        thisMenu.id = !this.id ? "menu_"+Math.floor(Math.random () * 1000): this.id;
         this.options = {};
         $.extend (this.options, $.mbMenu.options);
         $.extend (this.options, options);
