@@ -57,10 +57,9 @@ body{
 	top:1px;
 }
 
-/**/
 
 .menuContainer{
-  overflow:hidden;
+  /*overflow:hidden;*/
   position:absolute;
 	background-color:gray;
 	padding:0;

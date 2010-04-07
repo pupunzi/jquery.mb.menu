@@ -11,7 +11,7 @@
 
 /*
  * Name:jquery.mb.menu
- * Version: 2.8.0
+ * Version: 2.8.1
  */
 
 // to get the element that is fireing a contextMenu event you have $.mbMenu.lastContextMenuEl that returns an object.
@@ -20,13 +20,13 @@
   $.mbMenu = {
     name:"mbMenu",
     author:"Matteo Bicocchi",
-    version:"2.8.0",
+    version:"2.8.1",
     actualMenuOpener:false,
     options: {
       template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
       additionalData:"",
       menuSelector:".menuContainer",
-      menuWidth:200,
+      menuWidth:400,
       openOnRight:false,
       containment:"window",
       iconPath:"ico/",
@@ -288,7 +288,7 @@
       }
 
       var menuClass= op.options.menuSelector.replace(".","");
-      where.append("<div class='menuDiv'><div class='"+menuClass+"' style='display:table'></div></div>");
+      where.append("<div class='menuDiv'><div class='"+menuClass+"'></div></div>");
       this.menu  = where.find(".menuDiv");
       $(this.menu).css({width:0, height:0});
       if (op.options.minZindex!="auto"){
@@ -477,10 +477,8 @@
                 $(voice).attr("action",$(voice).attr("href").replace("javascript:",""));
               }
               var link=$(voice).attr("action")?$(voice).attr("action"):"window.open('"+$(voice).attr("href")+"', '"+target+"')";
-              if (!$(voice).attr("href") || ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1)){
-                $(voice).removeAttr("href");
-                eval(link);
-              }
+              $(voice).removeAttr("href");
+              eval(link);
               $(this).removeMbMenu(op,true);
             }else if($(voice).attr("menu"))
               return false;
