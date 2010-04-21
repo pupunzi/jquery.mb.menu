@@ -11,7 +11,9 @@
 
 /*
  * Name:jquery.mb.menu
- * Version: 2.8.1
+ * Version: 2.8.5rc5
+ *
+ * added: literal menu modality by: Sven Dowideit http://trunk.fosiki.com/Sandbox/WebSubMenu
  */
 
 // to get the element that is fireing a contextMenu event you have $.mbMenu.lastContextMenuEl that returns an object.
@@ -20,7 +22,7 @@
   $.mbMenu = {
     name:"mbMenu",
     author:"Matteo Bicocchi",
-    version:"2.8.1",
+    version:"2.8.5rc5",
     actualMenuOpener:false,
     options: {
       template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
@@ -53,7 +55,7 @@
       return this.each (function ()
       {
         var thisMenu =this;
-        thisMenu.id = !this.id ? "menu_"+Math.floor(Math.random () * 1000): this.id;
+        thisMenu.id = !this.id ? "menu_"+Math.floor (Math.random () * 1000): this.id;
         this.options = {};
         $.extend (this.options, $.mbMenu.options);
         $.extend (this.options, options);
@@ -318,8 +320,20 @@
         });
       }
       $(this.menuContainer).attr("id", "mb_"+m).hide();
-      this.voices= $("#"+m).find("a").clone(true);
 
+      //LITERAL MENU ADD BY SvenDowideit
+      var isMegaMenu=$("#"+m).hasClass("literal");
+
+      if (isMegaMenu) {
+        this.voices = $("#"+m).clone(true);
+        this.voices.css({display: "inline"});
+        this.voices.removeClass("mbmenu");
+        this.voices.addClass("literalMenu");
+        this.voices.attr("id", m+"_clone");
+      } else {
+        //TODO this will break <a rel=text> - if there are nested a's
+        this.voices= $("#"+m).find("a").clone(true);
+      }
 
       if (op.options.shadow) {
         var shadow = $("<div class='menuShadow'></div>").hide();
@@ -348,21 +362,30 @@
         var voice=this;
         var imgPlace="";
         var isText=$(voice).attr("rel")=="text";
+        var isLiteral=$(voice).hasClass("literalMenu");
         var isTitle=$(voice).attr("rel")=="title";
         var isDisabled=$(voice).is("[disabled]");
         var isSeparator=$(voice).attr("rel")=="separator";
 
-        if (op.options.hasImages && !isText){
+        // LITERAL ADD SvenDowideit
+        if (op.options.hasImages && !isText && !isLiteral){
 
           var imgPath=$(voice).attr("img")?$(voice).attr("img"):"blank.gif";
           imgPath=(imgPath.length>3 && imgPath.indexOf(".")>-1)?"<img class='imgLine' src='"+op.options.iconPath+imgPath+"'>":imgPath;
           imgPlace="<td class='img'>"+imgPath+"</td>";
         }
+
         var line="<table id='"+m+"_"+i+"' class='line"+(isTitle?" title":"")+"' cellspacing='0' cellpadding='0' border='0' style='width:100%;' width='100%'><tr>"+imgPlace+"<td class='voice' nowrap></td></tr></table>";
+
         if(isSeparator)
           line="<p class='separator' style='width:100%;'></p>";
+
         if(isText)
           line="<div style='width:100%; display:table' class='line' id='"+m+"_"+i+"'><div class='voice'></div></div>";
+
+        // LITERAL ADD SvenDowideit
+        if(isMegaMenu)
+          line="<div style='width:100%; display:inline' class='' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
         $(opener.menuContainer).append(line);
 
@@ -376,17 +399,16 @@
             menuLine.css({cursor:"default"});
             this.isOpener=true;
           }
-          if(isText){
+          if(isText||isLiteral){
             menuVoice.addClass("textBox");
             if ($.browser.msie) menuVoice.css({maxWidth:op.options.menuWidth});
-
             this.isOpener=true;
           }
           if(isDisabled){
             menuLine.addClass("disabled").css({cursor:"default"});
           }
 
-          if(!(isText || isTitle || isDisabled)){
+          if(!(isText || isTitle || isDisabled ||isLiteral)){
             menuLine.css({cursor:"pointer"});
             if (op.options.submenuHoverIntent==0){
               menuLine.bind("mouseover",function(event){
@@ -460,7 +482,7 @@
               $(this).removeClass("selected");
             });
           }
-          if(isDisabled || isTitle || isText){
+          if(isDisabled || isTitle || isText || isLiteral){
             $(this).removeAttr("href");
             menuLine.bind(mouseOver,function(){
               if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
@@ -470,19 +492,20 @@
               }
             }).css("cursor","default");
           }
-          menuLine.bind("click",function(){
-            if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled){
-              var target=$(voice).attr("target")?$(voice).attr("target"):"_self";
-              if ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1){
-                $(voice).attr("action",$(voice).attr("href").replace("javascript:",""));
+          if(! isLiteral)
+            menuLine.bind("click",function(){
+              if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled){
+                var target=$(voice).attr("target")?$(voice).attr("target"):"_self";
+                if ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1){
+                  $(voice).attr("action",$(voice).attr("href").replace("javascript:",""));
+                }
+                var link=$(voice).attr("action")?$(voice).attr("action"):"window.open('"+$(voice).attr("href")+"', '"+target+"')";
+                $(voice).removeAttr("href");
+                eval(link);
+                $(this).removeMbMenu(op,true);
               }
-              var link=$(voice).attr("action")?$(voice).attr("action"):"window.open('"+$(voice).attr("href")+"', '"+target+"')";
-              $(voice).removeAttr("href");
-              eval(link);
-              $(this).removeMbMenu(op,true);
-            }
               return false;
-          });
+            });
         }
       });
 
@@ -592,10 +615,10 @@
       if(!op) return;
       if (op.rootMenu) {
         $(op.actualOpenedMenu)
-                .removeAttr("isOpen")
-                .removeClass("selected");
+          .removeAttr("isOpen")
+          .removeClass("selected");
         $(op.rootMenu)
-                .css({width:1, height:1});
+          .css({width:1, height:1});
         if (fade) $(op.rootMenu).fadeOut(op.options.fadeOutTime,function(){$(this).remove();});
         else $(op.rootMenu).remove();
         op.rootMenu=false;
