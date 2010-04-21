@@ -21,15 +21,6 @@
   <script type="text/javascript" src="inc/mbMenu.js"></script>
   <link rel="stylesheet" type="text/css" href="css/menu_black.css" media="screen" />
 
-  <style type="text/css">
-    body  a.style{
-      color:#AF3002;
-      font-family:sans-serif;
-      font-size:13px;
-      text-decoration:none;
-    }
-  </style>
-  
   <script type="text/javascript">
     $(function(){
       if (self.location.href == top.location.href){
@@ -41,6 +32,13 @@
     });
   </script>
   <style type="text/css">
+
+    body  a.style{
+      color:#AF3002;
+      font-family:sans-serif;
+      font-size:13px;
+      text-decoration:none;
+    }
 
     .wrapper{
       font-family:Arial, Helvetica, sans-serif;
@@ -73,6 +71,23 @@
     :focus {
       outline: 0;
     }
+
+    span.btn{
+      padding:10px;
+      display:inline-block;
+      cursor:pointer;
+      font:12px/14px Arial, Helvetica, sans-serif;
+      color:#aaa;
+      background-color:#eee;
+      -moz-border-radius:10px;
+      -webkit-border-radius:10px;
+      -moz-box-shadow:#999 2px 0px 3px;
+      -webkit-box-shadow:#999 2px 0px 3px;
+    }
+    span.btn:hover{
+      background-color:#000;
+    }
+
   </style>
 
   <script type="text/javascript">
@@ -227,7 +242,8 @@
       </td>
     </tr>
   </table>
-  <div id="flashTest"><span onclick="loadFlash();" style="cursor:pointer"><br> click here to load a flash movie and test the menu over it!</span></div>
+  <div id="flashTest"><span onclick="loadFlash();" style="cursor:pointer"><br> click here to load a flash movie and test the menu over it!</span></div><br><br>
+  <span class="btn" onclick="$.fn.removeMbMenu();">closeMenu</span>
 
   <br/>
   <br/>
@@ -329,11 +345,13 @@
 
   <!-- end menues -->
 
+<!--
   <p>
     <img
             src="valid-xhtml10.png"
             alt="Valid XHTML 1.0 Transitional" height="31" width="88" />
   </p>
+-->
   <!--
   <div style="padding:6px;position:absolute;z-index:1000; bottom:10px; right:10px; -webkit-border-radius:7px;-moz-border-radius:7px;border:2px solid white; background:#000;text-align:center;color:white;">
     Please support my work<br>with a free donation!<br><br>
@@ -342,7 +360,6 @@
     </a>
   </div>-->
 
-  <span onclick="$.fn.removeMbMenu();">closeMenu</span>
 </div>
 </body>
 </html>
