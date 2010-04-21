@@ -321,14 +321,14 @@
       }
       $(this.menuContainer).attr("id", "mb_"+m).hide();
 
-      //LITERAL MENU ADD BY SvenDowideit
-      var isMegaMenu=$("#"+m).hasClass("literal");
+      //LITERAL MENU SUGGESTED BY SvenDowideit
+      var isLiteral=$("#"+m).hasClass("literal");
 
-      if (isMegaMenu) {
+      if (isLiteral) {
         this.voices = $("#"+m).clone(true);
         this.voices.css({display: "inline"});
         this.voices.removeClass("mbmenu");
-        this.voices.addClass("literalMenu");
+//        this.voices.addClass("literalMenu");
         this.voices.attr("id", m+"_clone");
       } else {
         //TODO this will break <a rel=text> - if there are nested a's
@@ -362,12 +362,11 @@
         var voice=this;
         var imgPlace="";
         var isText=$(voice).attr("rel")=="text";
-        var isLiteral=$(voice).hasClass("literalMenu");
         var isTitle=$(voice).attr("rel")=="title";
         var isDisabled=$(voice).is("[disabled]");
         var isSeparator=$(voice).attr("rel")=="separator";
 
-        // LITERAL ADD SvenDowideit
+        // LITERAL SUGGESTED SvenDowideit
         if (op.options.hasImages && !isText && !isLiteral){
 
           var imgPath=$(voice).attr("img")?$(voice).attr("img"):"blank.gif";
@@ -383,8 +382,8 @@
         if(isText)
           line="<div style='width:100%; display:table' class='line' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
-        // LITERAL ADD SvenDowideit
-        if(isMegaMenu)
+        // LITERAL SUGGESTED SvenDowideit
+        if(isLiteral)
           line="<div style='width:100%; display:inline' class='' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
         $(opener.menuContainer).append(line);
