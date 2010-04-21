@@ -18,8 +18,17 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
   <script type="text/javascript" src="inc/jquery.metadata.js"></script>
   <script type="text/javascript" src="inc/jquery.hoverIntent.js"></script>
-  <script type="text/javascript" src="inc/mbMenu.js"></script>
+  <script type="text/javascript" src="inc/mbMenu_literal.js"></script>
   <link rel="stylesheet" type="text/css" href="css/menu_black.css" media="screen" />
+
+  <style type="text/css">
+    body  a.style{
+      color:#AF3002;
+      font-family:sans-serif;
+      font-size:13px;
+      text-decoration:none;
+    }
+  </style>
 
   <script type="text/javascript">
     $(function(){
@@ -231,6 +240,7 @@
                 <td class="rootVoice {menu: 'menu_12'}" >ajax menu 12</td>
                 <td class="rootVoice {menu: 'menu_2'}" >menu 2</td>
                 <td class="rootVoice {menu: 'menu_3'}" >menu 3</td>
+                <td class="rootVoice {menu: 'help_menu'}" >help</td>
                 <td class="rootVoice {menu: 'empty'}" onclick="window.open('http://www.open-lab.com','ww');">menu 4 empty</td>
               </tr></table>
 
@@ -242,8 +252,7 @@
       </td>
     </tr>
   </table>
-  <div id="flashTest"><span onclick="loadFlash();" style="cursor:pointer"><br> click here to load a flash movie and test the menu over it!</span></div><br><br>
-  <span class="btn" onclick="$.fn.removeMbMenu();">closeMenu</span>
+  <div id="flashTest"><span onclick="loadFlash();" style="cursor:pointer"><br> click here to load a flash movie and test the menu over it!</span></div>
 
   <br/>
   <br/>
@@ -343,22 +352,44 @@
     <a class="{action: 'document.title=(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
   </div>
 
-  <!-- end menues -->
+  <div id="help_menu" class="mbmenu literal textBox" type="literal" >
+    <table style="valign:top;border:0;margin:10px;" width="900px">
+      <tr><td>
+        <h4><a name="General_Help"></a>  General Help </h4>
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top">Getting Started</a> <br />
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="book.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/book.png" /> FAQs</a> <br />
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="tip.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/tip.png" /> Tips and best practices</a> <br />
 
-<!--
-  <p>
-    <img
-            src="valid-xhtml10.png"
-            alt="Valid XHTML 1.0 Transitional" height="31" width="88" />
-  </p>
--->
-  <!--
-  <div style="padding:6px;position:absolute;z-index:1000; bottom:10px; right:10px; -webkit-border-radius:7px;-moz-border-radius:7px;border:2px solid white; background:#000;text-align:center;color:white;">
-    Please support my work<br>with a free donation!<br><br>
-    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=V6ZS8JPMZC446&amp;lc=GB&amp;item_name=mb%2eideas&amp;item_number=MBIDEAS&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHosted">
-      <img alt="PayPal" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0">
-    </a>
-  </div>-->
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Sandbox - play and test</a> <br />
+      </td><td>
+        <h4><a name="Documentation"></a>  Documentation </h4>
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> User docs</a> <br />
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="book.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/book.png" /> Developer docs</a> <br />
+
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Admin docs</a>
+      </td><td>
+        <h4><a name="Problem_Solving"></a>  Problem Solving </h4>
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Foswiki support forum</a> <br />
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Foswiki chat (IRC)</a> <br />
+
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="lock.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/lock.png" /> Help with login, password</a>
+      </td><td>
+        <h4><a name="Specific_Info"></a>  Specific Info </h4>
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Macros - create programmable pages.</a> <ul>
+        <li> Quick links: <a href="/System/VarSEARCH">SEARCH</a>, <a href="/System/VarIF">IF</a>, <a href="/System/VarINCLUDE">INCLUDE</a>, <a href="/System/VarTOC">TOC</a> <br />
+
+        </li></ul>
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Data Forms - add structured</a> <br />
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Wiki Applications - create applications</a> <br />
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="plugin.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/plugin.png" /> Plugins - extra functionality for Foswiki</a> <br />
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Templates - define the default text for new topics</a> <br />
+
+        <a href="http://trunk.fosiki.com/Sandbox/WebSubMenu?one=two" target="_top"> <img alt="else.png" src="http://trunk.fosiki.com/pub/System/DocumentGraphics/else.png" /> Skins provide different look and feel</a>
+      </td></tr>
+    </table>
+  </div>
+
+  <!-- end menues -->
 
 </div>
 </body>

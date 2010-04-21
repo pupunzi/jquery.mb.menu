@@ -54,8 +54,6 @@ body{
 
 }
 
-
-
 .rootVoices.vertical {
 	width:140px;
 }
@@ -156,4 +154,9 @@ body{
 	background-image:url("../images/menuArrow.gif");
 	background-repeat:no-repeat;
 	background-position:right;
+}
+
+
+.literal td{
+  vertical-align:top;
 }
