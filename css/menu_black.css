@@ -24,6 +24,7 @@ body{
 /*background-color:#fff;*/
   width:120px;
   font-family:Arial,Helvetica,sans-serif;
+  text-shadow:#fff 1px 1px 1px;  
   color: gray;
   font-size:14px;
   line-height:18px;
@@ -176,6 +177,17 @@ body{
   min-width:160px;
   vertical-align:top;
   border-right:1px solid #999;
+}
+.boxMenu td:hover{
+  background:url(../images/box_menu_over.png);
+  -moz-box-shadow:#666 2px 2px 4px;
+  -webkit-box-shadow:#666 2px 2px 4px;
+}
+
+.boxMenu td:hover a{
+  margin-right:3px;
+  text-shadow:#fff 1px 1px 1px;
+  color:#000;
 }
 
 .boxMenu td:last-child{

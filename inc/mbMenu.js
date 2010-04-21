@@ -594,7 +594,7 @@
           break;
         default:
           if ((actualX+mw)>= ww && mw<ww){
-            l-=($(this.menuContainer).offset().left+mw)-ww+1;
+            l-=($(this.menuContainer).offset().left+mw)-ww+18;
           }
           break;
       }

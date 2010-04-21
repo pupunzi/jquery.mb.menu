@@ -157,6 +157,17 @@ body{
   border-right:1px solid #999;
 }
 
+.boxMenu td:hover{
+  background:#f3f3f3;
+  -moz-box-shadow:#666 2px 2px 4px;
+  -webkit-box-shadow:#666 2px 2px 4px;
+}
+
+.boxMenu td:hover a{
+  margin-right:3px;
+  color:#000;
+}
+
 .boxMenu td:last-child{
   min-width:160px;
   vertical-align:top;
