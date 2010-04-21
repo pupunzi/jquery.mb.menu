@@ -160,3 +160,11 @@ body{
 .literal td{
   vertical-align:top;
 }
+
+.literal a:hover{
+  color:#ccc;
+}
+
+.literal a img{
+  border:0;
+}
