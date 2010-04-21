@@ -13,7 +13,7 @@
  * Name:jquery.mb.menu
  * Version: 2.8.5rc5
  *
- * added: literal menu modality by: Sven Dowideit http://trunk.fosiki.com/Sandbox/WebSubMenu
+ * added: boxMenu menu modality by: Sven Dowideit http://trunk.fosiki.com/Sandbox/WebSubMenu
  */
 
 // to get the element that is fireing a contextMenu event you have $.mbMenu.lastContextMenuEl that returns an object.
@@ -322,13 +322,11 @@
       $(this.menuContainer).attr("id", "mb_"+m).hide();
 
       //LITERAL MENU SUGGESTED BY SvenDowideit
-      var isLiteral=$("#"+m).hasClass("literal");
+      var isBoxmenu=$("#"+m).hasClass("boxMenu");
 
-      if (isLiteral) {
+      if (isBoxmenu) {
         this.voices = $("#"+m).clone(true);
-        this.voices.css({display: "inline"});
-        this.voices.removeClass("mbmenu");
-//        this.voices.addClass("literalMenu");
+        this.voices.css({display: "block"});
         this.voices.attr("id", m+"_clone");
       } else {
         //TODO this will break <a rel=text> - if there are nested a's
@@ -366,8 +364,8 @@
         var isDisabled=$(voice).is("[disabled]");
         var isSeparator=$(voice).attr("rel")=="separator";
 
-        // LITERAL SUGGESTED SvenDowideit
-        if (op.options.hasImages && !isText && !isLiteral){
+        // boxMenu SUGGESTED SvenDowideit
+        if (op.options.hasImages && !isText && !isBoxmenu){
 
           var imgPath=$(voice).attr("img")?$(voice).attr("img"):"blank.gif";
           imgPath=(imgPath.length>3 && imgPath.indexOf(".")>-1)?"<img class='imgLine' src='"+op.options.iconPath+imgPath+"'>":imgPath;
@@ -382,8 +380,8 @@
         if(isText)
           line="<div style='width:100%; display:table' class='line' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
-        // LITERAL SUGGESTED SvenDowideit
-        if(isLiteral)
+        // boxMenu SUGGESTED SvenDowideit
+        if(isBoxmenu)
           line="<div style='width:100%; display:inline' class='' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
         $(opener.menuContainer).append(line);
@@ -407,7 +405,7 @@
             menuLine.addClass("disabled").css({cursor:"default"});
           }
 
-          if(!(isText || isTitle || isDisabled ||isLiteral)){
+          if(!(isText || isTitle || isDisabled ||isBoxmenu)){
             menuLine.css({cursor:"pointer"});
             if (op.options.submenuHoverIntent==0){
               menuLine.bind("mouseover",function(event){
@@ -481,7 +479,7 @@
               $(this).removeClass("selected");
             });
           }
-          if(isDisabled || isTitle || isText || isLiteral){
+          if(isDisabled || isTitle || isText || isBoxmenu){
             $(this).removeAttr("href");
             menuLine.bind(mouseOver,function(){
               if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
@@ -491,7 +489,7 @@
               }
             }).css("cursor","default");
           }
-          if(! isLiteral)
+          if(! isBoxmenu)
             menuLine.bind("click",function(){
               if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled){
                 var target=$(voice).attr("target")?$(voice).attr("target"):"_self";

@@ -134,3 +134,56 @@ body{
 	background-repeat:no-repeat;
 	background-position:right;
 }
+
+/*BOX MENU*/
+
+.boxMenu{
+  color:#f3f3f3;
+  border-top:8px solid #B23305;
+  background:url("../images/box_top.png") repeat-x;
+}
+.boxMenu h4{
+  white-space:nowrap;
+  margin:0 0 20px 0;
+  padding:3px;
+  font:18px/20px georgia, serif;
+  padding-right:20px;
+  text-shadow:#666 2px 2px 1px;
+}
+
+.boxMenu td{
+  min-width:160px;
+  vertical-align:top;
+  border-right:1px solid #999;
+}
+
+.boxMenu td:last-child{
+  min-width:160px;
+  vertical-align:top;
+  border-right:none;
+}
+
+.boxMenu a{
+  font-size:14px;
+  white-space:nowrap;
+  display:block;
+  padding:5px;
+  margin-bottom:5px;
+}
+
+.boxMenu a img{
+  padding-right:5px;
+}
+
+.boxMenu a:hover{
+  color:#000;
+  text-shadow:#fff 2px 2px 1px;
+  background-image:url("../images/bgnd_sel_2.jpg");
+  -moz-box-shadow:#666 2px 2px 4px;
+  -webkit-box-shadow:#666 2px 2px 4px;
+}
+
+.boxMenu a img{
+  border:0;
+}
+ 
