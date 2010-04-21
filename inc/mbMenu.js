@@ -399,7 +399,7 @@
             menuLine.css({cursor:"default"});
             this.isOpener=true;
           }
-          if(isText||isLiteral){
+          if(isText){
             menuVoice.addClass("textBox");
             if ($.browser.msie) menuVoice.css({maxWidth:op.options.menuWidth});
             this.isOpener=true;
