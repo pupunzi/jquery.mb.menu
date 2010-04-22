@@ -96,6 +96,22 @@
   span.btn:hover{
     background-color:#000;
   }
+  
+  .msgBox{
+    position:absolute;
+    width:250px;
+    height:60px;
+    background:black;
+    -moz-box-shadow:#999 2px 0px 3px;
+    -webkit-box-shadow:#999 2px 0px 3px;    
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    padding:10px;
+    padding-top:30px;
+    top:10px;
+    right:10px;
+    font:20px/24px Arial, Helvetica, sans-serif;
+  }
 
 </style>
 
@@ -218,6 +234,13 @@
     });
   }
 
+  function showMessage(msg){
+    var msgBox=$("<div>").addClass("msgBox");
+    $("body").append(msgBox);
+    msgBox.append("You click on: "+msg);
+    setTimeout(function(){msgBox.fadeOut(500,function(){msgBox.remove();})},3000)
+  }
+
 </script>
 
 </head>
@@ -278,7 +301,7 @@
     <table class="rootVoices vertical" cellspacing='0' cellpadding='0' border='0'>
       <tr><td class="rootVoice {menu: 'box_menu'}" >box menu</td></tr>
       <tr><td class="rootVoice {menu: 'menu_12'}" >ajax menu</td></tr>
-      <tr><td class="rootVoice {menu: 'menu_2'}" >menu 2</td></tr>
+      <tr><td class="rootVoice {menu: 'menu_1'}" >menu 1</td></tr>
       <tr><td class="rootVoice {menu: 'menu_3'}" >menu 3</td></tr>
     </table>
   </div>
@@ -287,20 +310,20 @@
   <!-- menues -->
   <div id="menu_1" class="mbmenu">
     <a rel="title" >title menu_1.1</a> <!-- menuvoice title-->
-    <a href="#" class="{img: 'ico_view.gif'}" >menu_1.1 (href target _self) </a> <!-- menuvoice with href-->
-    <a class="{action: 'document.title=(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
+    <a href="http://patapage.com" class="{img: 'ico_view.gif'}" >menu_1.1 (href with target "_self") </a> <!-- menuvoice with href-->
+    <a class="{action: 'showMessage(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
     <a rel="separator"> </a> <!-- menuvoice separator-->
-    <a href="#" class="{action: 'document.title=(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
-    <a class="{action: 'document.title=(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
+    <a href="#" class="{action: 'showMessage(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
+    <a class="{action: 'showMessage(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
   </div>
 
   <div id="menu_2" class="mbmenu">
-    <a rel="title" class="{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'}">choose one of these links</a>
-    <a class="{action: 'document.title=(\'menu_2.2\')'}">menu_2.2</a>
-    <a class="{menu: 'sub_menu_1', img: 'icon_14.png'}">menu_2.3</a>
+    <a rel="title" class="{action: 'showMessage(\'menu_2.1\')', img: 'icon_13.png'}">choose one of these links</a>
+    <a class="{action: 'showMessage(\'menu_2.2\')'}">menu_2.2</a>
+    <a class="{menu: 'sub_menu_1', img: 'icon_14.png', disabled:true}">menu_2.3 (disabled)</a>
     <a class="{menu: 'sub_menu_2', img: '24-tag-add.png'}">menu_2.4</a>
     <a rel="separator"> </a>
-    <a class="{action: 'document.title=(\'menu_2.4\')'}">menu_2.5</a>
+    <a class="{action: 'showMessage(\'menu_2.4\')'}">menu_2.5</a>
   </div>
 
   <div id="menu_3" class="mbmenu" id="checkMenu">
@@ -320,26 +343,26 @@
       </form>
     </a>
     <a rel="separator"> </a>
-    <a class="{action: 'document.title=(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
+    <a class="{action: 'showMessage(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
     <a id="aaa" class="{menu:'sub_menu_2'}"  >submenu</a>
-    <a class="{action: 'document.title=(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo menu_3.4 con testo veramente molto lungo</a>
+    <a class="{action: 'showMessage(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo menu_3.4 con testo veramente molto lungo</a>
   </div>
 
   <div id="sub_menu_1" class="mbmenu">
-    <a class="{action: 'document.title=(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
+    <a class="{action: 'showMessage(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
     <a rel="separator"> </a>
     <a class="{menu:'menu_1'}">sub_menu_1.2</a>
-    <a class="{action: 'document.title=(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
-    <a class="{action: 'document.title=(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
+    <a class="{action: 'showMessage(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
+    <a class="{action: 'showMessage(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
   </div>
 
   <div id="sub_menu_2" class="mbmenu">
-    <a href="http://google.com" class="{action: 'alert(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" target="_blank" >sub_menu_2.1</a>
-    <a href="http://google.com" class="{img: 'buttonfind.gif'}" target="_blank" >sub_menu_2.2</a>
-    <a class="{action: 'document.title=(\'sub_menu_2.2\')'}">sub_menu_2.3</a>
+    <a class="{action: 'showMessage(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" target="_blank" >sub_menu_2.1</a>
+    <a href="http://google.com" class="{img: 'buttonfind.gif'}" target="_self" >sub_menu_2.2 (href target _self)</a>
+    <a class="{action: 'showMessage(\'sub_menu_2.3\')'}">sub_menu_2.3</a>
     <a rel="separator"> </a>
-    <a class="{action: 'document.title=(\'sub_menu_2.3\')'}">sub_menu_2.4</a>
-    <a class="{action: 'document.title=(\'sub_menu_2.4\')'}" >sub_menu_2.5</a>
+    <a class="{action: 'showMessage(\'sub_menu_2.4\')'}">sub_menu_2.4</a>
+    <a class="{action: 'showMessage(\'sub_menu_2.5\')'}" >sub_menu_2.5</a>
   </div>
 
   <div id="conext_menu_1" class="mbmenu">
@@ -350,7 +373,7 @@
     <a rel="separator"> </a>
     <a class="{action: 'testForContextMenu()',img: 'iconDone.png'}" >test: get opener ID</a>
     <a id="bbb" class="{menu:'sub_menu_2'}" >submenu</a>
-    <a class="{action: 'document.title=(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
+    <a class="{action: 'showMessage(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
   </div>
 
   <div id="box_menu" class="mbmenu boxMenu">
