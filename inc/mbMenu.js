@@ -367,7 +367,7 @@
         var isDisabled=$(voice).is("[disabled]");
         var isSeparator=$(voice).attr("rel")=="separator";
 
-        // boxMenu SUGGESTED SvenDowideit
+        // boxMenu SUGGESTED by Sven Dowideit
         if (op.options.hasImages && !isText && !isBoxmenu){
 
           var imgPath=$(voice).attr("img")?$(voice).attr("img"):"blank.gif";
@@ -383,7 +383,7 @@
         if(isText)
           line="<div style='width:100%; display:table' class='line' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
-        // boxMenu SUGGESTED SvenDowideit
+        // boxMenu SUGGESTED by Sven Dowideit
         if(isBoxmenu)
           line="<div style='width:100%; display:inline' class='' id='"+m+"_"+i+"'><div class='voice'></div></div>";
 
@@ -492,9 +492,8 @@
               }
             }).css("cursor","default");
           }
-          if(!isBoxmenu)
             menuLine.bind("click",function(){
-              if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled){
+              if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled &&  !isBoxmenu && !isText){
                 var target=$(voice).attr("target")?$(voice).attr("target"):"_self";
                 if ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1){
                   $(voice).attr("action",$(voice).attr("href").replace("javascript:",""));
@@ -505,7 +504,6 @@
                 $(this).removeMbMenu(op,true);
               }else{
                 $(document).unbind("click.closeMbMenu");
-                //return false;
               }
             });
         }
