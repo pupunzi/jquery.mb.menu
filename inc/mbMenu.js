@@ -111,14 +111,13 @@
                 }
                 $(this).removeMbMenu(thisMenu);
               }
-
               $(document).unbind("click.closeMbMenu");
-
               //return;
             });
           }
           var mouseOver=$.browser.msie?"mouseenter":"mouseover";
           var mouseOut=$.browser.msie?"mouseleave":"mouseout";
+
           if (this.options.hoverIntent==0){
             $(thisMenu.menuvoice).bind(mouseOver,function(){
               if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
@@ -136,7 +135,11 @@
             });
             $(thisMenu.menuvoice).bind(mouseOut,function(){
               if (closeOnMouseOut)
-                $.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(thisMenu,true);$(document).unbind("click.closeMbMenu");},$(root)[0].options.closeAfter);
+                $.mbMenu.deleteOnMouseOut= setTimeout(function(){
+                  $(this).removeMbMenu(thisMenu,true);
+                  $(document).unbind("click.closeMbMenu");
+                },$(root)[0].options.closeAfter);
+
               if ($(this).attr("menu")=="empty"){
                 $(this).removeClass("selected");
                 thisMenu.clearClicked= setTimeout(function(){thisMenu.rootMenu=false;thisMenu.clicked=false;},$(root)[0].options.closeAfter);
@@ -489,7 +492,7 @@
               }
             }).css("cursor","default");
           }
-          if(! isBoxmenu)
+          if(!isBoxmenu)
             menuLine.bind("click",function(){
               if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled){
                 var target=$(voice).attr("target")?$(voice).attr("target"):"_self";
@@ -500,8 +503,10 @@
                 $(voice).removeAttr("href");
                 eval(link);
                 $(this).removeMbMenu(op,true);
+              }else{
+                $(document).unbind("click.closeMbMenu");
+                //return false;
               }
-              return false;
             });
         }
       });
@@ -612,10 +617,10 @@
       if(!op) return;
       if (op.rootMenu) {
         $(op.actualOpenedMenu)
-          .removeAttr("isOpen")
-          .removeClass("selected");
+                .removeAttr("isOpen")
+                .removeClass("selected");
         $(op.rootMenu)
-          .css({width:1, height:1});
+                .css({width:1, height:1});
         if (fade) $(op.rootMenu).fadeOut(op.options.fadeOutTime,function(){$(this).remove();});
         else $(op.rootMenu).remove();
         op.rootMenu=false;
