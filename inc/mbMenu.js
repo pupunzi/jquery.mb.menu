@@ -15,7 +15,6 @@
  *
  * added: boxMenu menu modality by: Sven Dowideit http://trunk.fosiki.com/Sandbox/WebSubMenu
  */
-
 // to get the element that is fireing a contextMenu event you have $.mbMenu.lastContextMenuEl that returns an object.
 
 (function($) {
