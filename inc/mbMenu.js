@@ -88,8 +88,8 @@
           thisMenu.menuvoice=$(this).find("[menu]").add($(this).filter("[menu]"));
 
           $(thisMenu.menuvoice).each(function(){
-            $(this).addClass("rootVoice");
-            $(this).attr("nowrap","nowrap");
+//            $(this).addClass("rootVoice");
+            $(this).css("white-space","nowrap");
           });
           if(openOnClick){
             $(thisMenu.menuvoice).bind("click",function(){
@@ -129,8 +129,8 @@
                 $(this).buildMbMenu(thisMenu,$(this).attr("menu"));
                 if ($(this).attr("menu")=="empty"){
                   $(this).removeMbMenu(thisMenu);
-                  $(this).removeAttr("isOpen");
                 }
+                $(this).removeAttr("isOpen");
               }
             });
             $(thisMenu.menuvoice).bind(mouseOut,function(){
@@ -168,8 +168,8 @@
                   $(this).buildMbMenu(thisMenu,$(this).attr("menu"));
                   if ($(this).attr("menu")=="empty"){
                     $(this).removeMbMenu(thisMenu);
-                    $(this).removeAttr("isOpen");
                   }
+                  $(this).removeAttr("isOpen");
                 }
               },
               sensitivity: 30,
@@ -528,8 +528,7 @@
         minWidth:op.options.menuWidth
       });
       if ($.browser.msie) $(this.menuContainer).css("width",$(this.menuContainer).width()+2);
-
-
+      
       switch(type){
         case "sm":
           t=$(this).position().top+op.options.submenuTop;
