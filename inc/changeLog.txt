@@ -5,7 +5,7 @@ jQuery.mb.menu
 
       features:
       added a boxmenu as new menu type (it can contain whatever HTML inside).
-
+      added "disabled" to root menu.
       Cleaned up code (around 100 lines shorter).
 
 
