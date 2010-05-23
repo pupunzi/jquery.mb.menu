@@ -1,5 +1,14 @@
 jQuery.mb.menu
 
+2.8.5 bugfix:
+      if an empty root menu randomly submenu wer not closed.
+
+      features:
+      added a boxmenu as new menu type (it can contain whatever HTML inside).
+
+      Cleaned up code (around 100 lines shorter).
+
+
 2.8.1  IE6/7 bugfix:
   modified CSS for webkit compliance
   better defined the click event on the menuline.

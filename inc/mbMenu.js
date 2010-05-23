@@ -39,9 +39,6 @@
       submenuTop:0,
       submenuLeft:4,
       opacity:1,
-      shadow:false,
-      shadowColor:"transparent",
-      shadowOpacity:.2,
       openOnClick:true,
       closeOnMouseOut:false,
       closeAfter:500,
@@ -80,16 +77,18 @@
             thisMenu.menuvoice=$(this).find(".rootVoice");
             $(thisMenu.menuvoice).each(function(){
               if ($(this).metadata().menu) $(this).attr("menu",$(this).metadata().menu);
+              if ($(this).metadata().disabled) $(this).attr("isDisable",$(this).metadata().disabled);
             });
           }
 
           thisMenu.menuvoice=$(this).find("[menu]").add($(this).filter("[menu]"));
+          thisMenu.menuvoice.filter("[isDisable]").addClass("disabled");
 
-          $(thisMenu.menuvoice).each(function(){
-            $(this).css("white-space","nowrap");
-          });
+          $(thisMenu.menuvoice).css("white-space","nowrap");
+
           if(openOnClick){
             $(thisMenu.menuvoice).bind("click",function(){
+              $(document).unbind("click.closeMbMenu");                              
               if (!$(this).attr("isOpen")){
                 $(this).buildMbMenu(thisMenu,$(this).attr("menu"));
                 $(this).attr("isOpen","true");
@@ -246,7 +245,10 @@
       var where=(!type|| type=="cm")?$(document.body):$(this).parent().parent();
 
       var menuClass= op.options.menuSelector.replace(".","");
+
       if(op.rootMenu) menuClass+=" submenuContainer";
+      if(!op.rootMenu && $(opener).attr("isDisable")) menuClass+=" disabled";
+
       where.append("<div class='menuDiv'><div class='"+menuClass+" '></div></div>");
       this.menu  = where.find(".menuDiv");
       $(this.menu).css({width:0, height:0});
@@ -291,12 +293,6 @@
         this.voices= $("#"+m).find("a").clone(true);
       }
 
-      if (op.options.shadow) {
-        var shadow = $("<div class='menuShadow'></div>").hide();
-        if(msie6)
-          shadow = $("<iframe class='menuShadow'></iframe>").hide();
-      }
-
       /*
        *using metadata plugin you can add attribut writing them inside the class attr with a JSON sintax
        * for ex: class="rootVoice {menu:'menu_2'}"
@@ -311,14 +307,19 @@
         });
       }
 
+
       // build each voices of the menu
       $(this.voices).each(function(i){
 
         var voice=this;
         var imgPlace="";
+
         var isText=$(voice).attr("rel")=="text";
         var isTitle=$(voice).attr("rel")=="title";
         var isDisabled=$(voice).is("[isdisable]");
+        if(!op.rootMenu && $(opener).attr("isDisable"))
+          isDisabled=true;
+
         var isSeparator=$(voice).attr("rel")=="separator";
 
         // boxMenu SUGGESTED by Sven Dowideit
@@ -347,7 +348,7 @@
         var menuVoice = menuLine.find(".voice");
         if(!isSeparator){
           menuVoice.append(this);
-          if($(this).attr("menu")){
+          if($(this).attr("menu") && !isDisabled){
             menuLine.find(".voice a").wrap("<div class='menuArrow'></div>");
             menuLine.find(".menuArrow").addClass("subMenuOpener");
             menuLine.css({cursor:"default"});
@@ -485,22 +486,11 @@
       if (op.options.fadeInTime>0) $(this.menuContainer).fadeIn(op.options.fadeInTime);
       else $(this.menuContainer).show();
 
-      if (op.options.shadow) {
-        $(this.menu).prepend(shadow);
-        shadow.css({
-          width:$(this.menuContainer).outerWidth(),
-          height:$(this.menuContainer).outerHeight()-1,
-          position:'absolute',
-          backgroundColor:op.options.shadowColor,
-          border:0,
-          opacity:op.options.shadowOpacity
-        }).show();
-      }
       var wh= (op.options.containment=="window")?$(window).height():$("#"+op.options.containment).offset().top+$("#"+op.options.containment).outerHeight();
       var ww=(op.options.containment=="window")?$(window).width():$("#"+op.options.containment).offset().left+$("#"+op.options.containment).outerWidth();
 
       var mh=$(this.menuContainer).outerHeight();
-      var mw=shadow?shadow.outerWidth():$(this.menuContainer).outerWidth();
+      var mw=$(this.menuContainer).outerWidth();
 
       var actualX=$(where.find(".menuDiv:first")).offset().left-$(window).scrollLeft();
       var actualY=$(where.find(".menuDiv:first")).offset().top-$(window).scrollTop();
@@ -534,7 +524,6 @@
     removeMbMenu: function(op,fade){
       if(!op)op=$.mbMenu.options.actualMenuOpener;
       if(!op) return;
-
       if (op.rootMenu) {
         $(op.actualOpenedMenu)
                 .removeAttr("isOpen")

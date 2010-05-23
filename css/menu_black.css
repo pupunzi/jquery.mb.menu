@@ -30,11 +30,7 @@ body{
   line-height:18px;
   padding:8px;
   cursor: pointer;
-  -moz-border-radius:8px 8px 0 0px;
-  -webkit-border-top-right-radius:8px;
-  -webkit-border-top-left-radius:8px;
-  -webkit-border-bottom-right-radius:0px;
-  -webkit-border-bottom-left-radius:0px;}
+}
 
 .rootVoices td.rootVoice.selected{
   background: black url("../images/bgnd_sel_4.png");
@@ -54,6 +50,11 @@ body{
   -webkit-border-bottom-left-radius:0px;
 
 }
+.rootVoices td.rootVoice.disabled.selected{
+  background:#999!important;
+  color:#666;
+  text-shadow:#ddd 1px 1px 1px;
+}
 
 .rootVoices.vertical {
   width:140px;
@@ -66,13 +67,6 @@ body{
   -webkit-border-bottom-left-radius:8px;
 }
 
-.menuShadow{
-  padding:2px;
-  padding-bottom:0px;
-  left:-2px;
-  top:1px;
-}
-
 /**/
 
 .menuContainer{
@@ -83,6 +77,7 @@ body{
   padding:0;
   -moz-box-shadow:#999 2px 2px 10px;
   -webkit-box-shadow:#999 2px 2px 10px;
+  box-shadow:#999 2px 2px 10px;
   -moz-border-radius: 0 0 8px 8px;
   -webkit-border-top-right-radius:0px;
   -webkit-border-top-left-radius:0px;
@@ -91,6 +86,11 @@ body{
 }
 .menuContainer.submenuContainer{
   border-top:none!important;
+}
+
+.menuContainer.disabled{
+  border-top:5px solid #999;
+  background-color:gray;
 }
 .menuContainer .line{
   background-color:transparent;
@@ -102,16 +102,26 @@ body{
   font-size:14px;
 /*border-bottom:1px solid black;*/
 }
+.menuContainer.disabled .line.title {
+  background-color:#999;
+}
 .menuContainer .line.title a{
   font-size:14px;
+  color:#ccc;
+}
+.menuContainer.disabled .line.title a{
+  font-size:14px;
+  color:#666;
+  text-shadow:#999 1px 1px 1px;
 }
 .menuContainer td a{
   text-decoration:none;
-  color: #f3f3f3;
+  color:#f3f3f3;
+  text-shadow:#666 1px 1px 1px;
 }
 .menuContainer td.voice{
   font-family:Arial,Helvetica,sans-serif;
-  font-size:12px;
+  font-size:14px;
   padding:7px;
 }
 .menuContainer .separator{
@@ -148,7 +158,8 @@ body{
   display:block;
 }
 .menuContainer .disabled td, .menuContainer .disabled td a {
-  color: #cccccc;
+  color:#555;
+  text-shadow:#999 1px 1px 1px;
 }
 .menuContainer .subMenuOpener{
   background-image:url("../images/menuArrow_w.gif");
