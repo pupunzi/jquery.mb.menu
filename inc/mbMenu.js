@@ -236,14 +236,14 @@
         $(op.actualOpenedMenu).attr("isOpen","true");
         $(op.actualOpenedMenu).addClass("selected");
       }
-      
+
       //empty
       if($(this).attr("menu")=="empty"){
         return;
       }
 
       var opener=this;
-      var where=(!type|| type=="cm")?$(document.body):$(this).parent().parent();     
+      var where=(!type|| type=="cm")?$(document.body):$(this).parent().parent();
 
       var menuClass= op.options.menuSelector.replace(".","");
       if(op.rootMenu) menuClass+=" submenuContainer";
@@ -364,10 +364,16 @@
 
           if(!(isText || isTitle || isDisabled ||isBoxmenu)){
             menuLine.css({cursor:"pointer"});
-            menuLine.bind(mouseOver,function(){
+
+            menuLine.bind("mouseover",function(){
               clearTimeout($.mbMenu.deleteOnMouseOut);
               $(this).addClass("selected");
             });
+
+            menuLine.bind("mouseout",function(){
+              $(this).removeClass("selected");
+            });
+
             menuLine.mb_hover(
                     op.options.submenuHoverIntent,
                     function(event){
@@ -396,10 +402,6 @@
                     },
                     function(){}
                     );
-
-            menuLine.bind(mouseOut,function(){
-              $(this).removeClass("selected");
-            });
           }
           if(isDisabled || isTitle || isText || isBoxmenu){
             $(this).removeAttr("href");
@@ -573,13 +575,13 @@
 
       $(this).css('zIndex',zi+=10);
     },
-    mb_hover:function(isHoverIntent, fn1, fn2){
-      if(isHoverIntent==0)
+    mb_hover:function(hoverIntent, fn1, fn2){
+      if(hoverIntent==0)
         $(this).hover(fn1,fn2);
       else
         $(this).hoverIntent({
           sensitivity: 30,
-          interval: isHoverIntent,
+          interval: hoverIntent,
           timeout: 0,
           over:fn1,
           out:fn2
