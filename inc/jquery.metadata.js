@@ -1,14 +1,3 @@
-/*******************************************************************************
- jquery.mb.components
- Copyright (c) 2001-2010. Matteo Bicocchi (Pupunzi); Open lab srl, Firenze - Italy
- email: info@pupunzi.com
- site: http://pupunzi.com
-
- Licences: MIT, GPL
- http://www.opensource.org/licenses/mit-license.php
- http://www.gnu.org/licenses/gpl.html
- ******************************************************************************/
-
 /**
  * Sets the type of metadata to use. Metadata is encoded in JSON, and each property
  * in the JSON will become a property of the element itself.

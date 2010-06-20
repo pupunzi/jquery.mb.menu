@@ -1,4 +1,15 @@
 /*
+ * jquery.mb.components
+ * Copyright (c) 2001-2010. Matteo Bicocchi (Pupunzi); Open lab srl, Firenze - Italy
+ * email: mbicocchi@open-lab.com
+ * site: http://pupunzi.com
+ *
+ * Licences: MIT, GPL
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ */
+
+/*
 * jQuery.mb.components: jquery.mb.menu
 * © 2001 - 2010 Matteo Bicocchi (pupunzi), Open Lab
 *
@@ -118,6 +129,8 @@ body{
   text-decoration:none;
   color:#f3f3f3;
   text-shadow:#666 1px 1px 1px;
+  display:block;
+  height:100%;
 }
 .menuContainer td.voice{
   font-family:Arial,Helvetica,sans-serif;

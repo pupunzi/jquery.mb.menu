@@ -1,14 +1,3 @@
-/*******************************************************************************
- jquery.mb.components
- Copyright (c) 2001-2010. Matteo Bicocchi (Pupunzi); Open lab srl, Firenze - Italy
- email: info@pupunzi.com
- site: http://pupunzi.com
-
- Licences: MIT, GPL
- http://www.opensource.org/licenses/mit-license.php
- http://www.gnu.org/licenses/gpl.html
- ******************************************************************************/
-
 /**
 * Styleswitch stylesheet switcher built on jQuery
 * Under an Attribution, Share Alike License
