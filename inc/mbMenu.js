@@ -88,7 +88,7 @@
 
           if(openOnClick){
             $(thisMenu.menuvoice).bind("click",function(){
-              $(document).unbind("click.closeMbMenu");                              
+              $(document).unbind("click.closeMbMenu");
               if (!$(this).attr("isOpen")){
                 $(this).buildMbMenu(thisMenu,$(this).attr("menu"));
                 $(this).attr("isOpen","true");
@@ -163,11 +163,6 @@
         thisMenu.rootMenu=false;
         thisMenu.actualOpenedMenu=false;
         thisMenu.menuvoice=false;
-
-        /*
-         *using metadata plugin you can add attribut writing them inside the class attr with a JSON sintax
-         * for ex: class="rootVoice {menu:'menu_2'}"
-         */
         var cMenuEls;
         if ($.metadata){
           $.metadata.setType("class");
@@ -183,7 +178,8 @@
           var cm=this;
           cm.id = !cm.id ? "menu_"+Math.floor (Math.random () * 100): cm.id;
           $(cm).css({cursor:"default"});
-          $(cm).bind("contextmenu","mousedown",function(event){
+          var evt= $.browser.opera?"dblclick":"contextmenu";
+          $(cm).bind(evt,"mousedown",function(event){
             event.preventDefault();
             event.stopPropagation();
             event.cancelBubble=true;
@@ -414,7 +410,12 @@
               }
             }).css("cursor","default");
           }
-          menuLine.bind("click",function(){
+          if(isBoxmenu){
+            menuLine.find("a").css("cursor","pointer").click(function(){$.fn.removeMbMenu($.mbMenu.options.actualMenuOpener,true);})
+          }
+          menuLine.bind("click",function(event){
+            console.debug(event.type)
+
             if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled &&  !isBoxmenu && !isText){
               var target=$(voice).attr("target")?$(voice).attr("target"):"_self";
               if ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1){
@@ -553,16 +554,17 @@
       return mouseY;
     },
     //get max z-inedex of the page
-    mb_bringToFront: function(){
+    mb_bringToFront: function(zIndexContext){
       var zi=10;
-      $('*').each(function() {
-        if($(this).css("position")=="absolute" || $(this).css("position")=="fixed" ){
+      var els= zIndexContext && zIndexContext!="auto" ? $(zIndexContext):$("*");
+      els.not(".alwaysOnTop").each(function() {
+        if($(this).css("position")=="absolute" || $(this).css("position")=="fixed"){
           var cur = parseInt($(this).css('zIndex'));
           zi = cur > zi ? parseInt($(this).css('zIndex')) : zi;
         }
       });
-
-      $(this).css('zIndex',zi+=10);
+      $(this).not(".alwaysOnTop").css('zIndex',zi+=1);
+      return zi;
     },
     mb_hover:function(hoverIntent, fn1, fn2){
       if(hoverIntent==0)

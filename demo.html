@@ -110,7 +110,7 @@
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
     padding:10px;
-    padding-top:30px;
+    padding-top:20px;
     top:10px;
     right:10px;
     font:20px/24px Arial, Helvetica, sans-serif;
@@ -210,7 +210,9 @@
       adjustTop:0,
       opacity:.99,
       closeOnMouseOut:false,
-      onContextualMenu:function(o,e){}, //params: o = the contextual menu,e = the event
+      onContextualMenu:function(o,e){
+        testForContextMenu();
+      }, //params: o = the contextual menu,e = the event
       shadow:false
     });
   });
@@ -218,7 +220,7 @@
   //this function get the id of the element that fires the context menu.
   function testForContextMenu(el){
     if (!el) el= $.mbMenu.lastContextMenuEl;
-    alert("the ID of the element is:   "+$(el).attr("id"));
+    showMessage("the ID of the element is:   "+$(el).attr("id"));
   }
 
   function recallcMenu(el){
@@ -239,7 +241,7 @@
   function showMessage(msg){
     var msgBox=$("<div>").addClass("msgBox");
     $("body").append(msgBox);
-    msgBox.append("You click on: <br>"+msg);
+    msgBox.append(msg);
     setTimeout(function(){msgBox.fadeOut(500,function(){msgBox.remove();})},3000)
   }
 
@@ -293,6 +295,11 @@ change css:
   <a class="cmVoice {cMenu:'menu_12'}" id="pippo"> Contextual menu 1</a>&nbsp;&nbsp;&nbsp;<a class="cmVoice {cMenu:'conext_menu_1'}" id="pluto"> Contextual menu 2</a>
   <!-- end conextual menu  -->
   <br/>
+  <ul>
+    <li id="li_1" class="cmVoice {cMenu:'menu_12'}">Contextual menu 3</li>
+    <li id="li_2" class="cmVoice {cMenu:'menu_12'}">Contextual menu 4</li>
+    <li id="li_3" class="cmVoice {cMenu:'menu_12'}">Contextual menu 5</li>
+  </ul>
   <br/>
   <br/>
   <br/>
@@ -337,7 +344,7 @@ change css:
       <form>
         <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
         <input id="myInput" type="text" name="tuoTesto" value="you can have input inside" />
-        <input type="button" name="tuoTesto" value="submit" onclick="$.fn.removeMbMenu($.mbMenu.options.actualOpenedMenu,true);" />
+        <input type="button" name="tuoTesto" value="submit" onclick="$.fn.removeMbMenu($.mbMenu.options.actualOpenedMenu,true);"/>
         <table>
           <tr><td><input type="checkbox" checked value="aaa"/></td><td>checkbox 1</td></tr>
           <tr><td><input type="checkbox" value="aaa"/></td><td>checkbox 1</td></tr>
@@ -405,10 +412,15 @@ change css:
           <a href="http://devineu.eu/mission.page" target="_blank">Mission</a>
           <a href="http://devineu.eu/interviewyourself.page" target="_blank">Interview yourself</a>
           <a href="http://devineu.eu/getInterviewed.page" target="_blank">Get interviewed</a>
+          <a onclick="showMessage('close!!')">close on click</a>
         </td>
       </tr>
     </table>
   </div>
+
+  <script type="text/javascript">
+//    $("#box_menu a").click(function(){$.fn.removeMbMenu($.mbMenu.options.actualMenuOpener);})
+  </script>
 
   <!-- end menus -->
 
