@@ -174,11 +174,12 @@
         cMenuEls= $(this).find("[cMenu]").add($(this).filter("[cMenu]"));
 
         $(cMenuEls).each(function(){
-          $(this).css({"-webkit-user-select":"none","-moz-user-select":"none"});
+          //$(this).css({"-webkit-user-select":"none","-moz-user-select":"none"});
           var cm=this;
           cm.id = !cm.id ? "menu_"+Math.floor (Math.random () * 100): cm.id;
           $(cm).css({cursor:"default"});
-          var evt= $.browser.opera?"dblclick":"contextmenu";
+          //var evt= $.browser.opera?"dblclick":"contextmenu";
+          var evt= "contextmenu";
           $(cm).bind(evt,"mousedown",function(event){
             event.preventDefault();
             event.stopPropagation();
