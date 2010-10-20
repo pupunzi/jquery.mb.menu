@@ -39,6 +39,7 @@
       submenuTop:0,
       submenuLeft:4,
       opacity:1,
+      ajaxAlwaysReload:false,
       openOnClick:true,
       closeOnMouseOut:false,
       closeAfter:500,
@@ -210,7 +211,6 @@
   };
   $.fn.extend({
     buildMbMenu: function(op,m,type,e){
-      var msie6=$.browser.msie && $.browser.version=="6.0";
       var mouseOver=$.browser.msie?"mouseenter":"mouseover";
       var mouseOut=$.browser.msie?"mouseleave":"mouseout";
       if (e) {
@@ -233,7 +233,7 @@
         $(op.actualOpenedMenu).addClass("selected");
       }
 
-      //empty
+      //empty menu
       if($(this).attr("menu")=="empty"){
         return;
       }
@@ -263,7 +263,8 @@
         position:"absolute",
         opacity:op.options.opacity
       });
-      if (!$("#"+m).html()){
+      if (!$("#"+m).html() || op.ajaxAlwaysReload){
+        $("#"+m).remove();
         $.ajax({
           type: "POST",
           url: op.options.template,
