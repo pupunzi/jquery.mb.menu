@@ -1,5 +1,10 @@
 jQuery.mb.menu
 
+2.8.9 bugfix:
+      prevent the close of a menu if seted as openOnClick false (open on mouseover) once the menu is open and you click on the root voice.
+
+
+
 2.8.5 bugfix:
       if an empty root menu randomly submenu wer not closed.
 

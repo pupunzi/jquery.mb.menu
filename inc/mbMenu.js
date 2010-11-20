@@ -11,7 +11,7 @@
 
 /*
  * Name:jquery.mb.menu
- * Version: 2.8.5rc5
+ * Version: 2.8.9rc5
  *
  * added: boxMenu menu modality by: Sven Dowideit http://trunk.fosiki.com/Sandbox/WebSubMenu
  */
@@ -21,7 +21,7 @@
   $.mbMenu = {
     name:"mbMenu",
     author:"Matteo Bicocchi",
-    version:"2.8.5rc5",
+    version:"2.8.9rc5",
     actualMenuOpener:false,
     options: {
       template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
@@ -112,43 +112,44 @@
           var mouseOut=$.browser.msie?"mouseleave":"mouseout";
 
           $(thisMenu.menuvoice).mb_hover(
-                  this.options.hoverIntent,
-                  function(){
-                    if(!$(this).attr("isOpen"))
-                      $("[isOpen]").removeAttr("isOpen");
-                    if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
-                    if (!openOnClick) $(thisMenu).find(".selected").removeClass("selected");
-                    if(thisMenu.actualOpenedMenu){ $(thisMenu.actualOpenedMenu).removeClass("selected");}
-                    $(this).addClass("selected");
-                    if((thisMenu.clicked || !openOnClick) && !$(this).attr("isOpen")){
-                      $(this).removeMbMenu(thisMenu);
-                      $(this).buildMbMenu(thisMenu,$(this).attr("menu"));
-                      if ($(this).attr("menu")=="empty"){
-                        $(this).removeMbMenu(thisMenu);
-                      }
-                      $(this).attr("isOpen","true");
-                    }
-                  },
-                  function(){
-                    if (closeOnMouseOut)
-                      $.mbMenu.deleteOnMouseOut= setTimeout(function(){
-                        $(this).removeMbMenu(thisMenu,true);
-                        $(document).unbind("click.closeMbMenu");
-                      },$(root)[0].options.closeAfter);
+              this.options.hoverIntent,
+                                        function(){
+                                          if(!$(this).attr("isOpen"))
+                                            $("[isOpen]").removeAttr("isOpen");
+                                          $(document).unbind("click.closeMbMenu");
+                                          if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
+                                          if (!openOnClick) $(thisMenu).find(".selected").removeClass("selected");
+                                          if(thisMenu.actualOpenedMenu){ $(thisMenu.actualOpenedMenu).removeClass("selected");}
+                                          $(this).addClass("selected");
+                                          if((thisMenu.clicked || !openOnClick) && !$(this).attr("isOpen")){
+                                            $(this).removeMbMenu(thisMenu);
+                                            $(this).buildMbMenu(thisMenu,$(this).attr("menu"));
+                                            if ($(this).attr("menu")=="empty"){
+                                              $(this).removeMbMenu(thisMenu);
+                                            }
+                                            $(this).attr("isOpen","true");
+                                          }
+                                        },
+                                        function(){
+                                          if (closeOnMouseOut)
+                                            $.mbMenu.deleteOnMouseOut= setTimeout(function(){
+                                              $(this).removeMbMenu(thisMenu,true);
+                                              $(document).unbind("click.closeMbMenu");
+                                            },$(root)[0].options.closeAfter);
 
-                    if ($(this).attr("menu")=="empty"){
-                      $(this).removeClass("selected");
-                    }
-                    if(!thisMenu.clicked)
-                      $(this).removeClass("selected");
-                    $(document).one("click.closeMbMenu",function(){
-                      $("[isOpen]").removeAttr("isOpen");
-                      $(this).removeClass("selected");
-                      $(this).removeMbMenu(thisMenu,true);
-                      thisMenu.rootMenu=false;thisMenu.clicked=false;
-                    });
-                  }
-                  );
+                                          if ($(this).attr("menu")=="empty"){
+                                            $(this).removeClass("selected");
+                                          }
+                                          if(!thisMenu.clicked)
+                                            $(this).removeClass("selected");
+                                          $(document).one("click.closeMbMenu",function(){
+                                            $("[isOpen]").removeAttr("isOpen");
+                                            $(this).removeClass("selected");
+                                            $(this).removeMbMenu(thisMenu,true);
+                                            thisMenu.rootMenu=false;thisMenu.clicked=false;
+                                          });
+                                        }
+              );
         });
       });
     },
@@ -175,7 +176,7 @@
         cMenuEls= $(this).find("[cMenu]").add($(this).filter("[cMenu]"));
 
         $(cMenuEls).each(function(){
-          //$(this).css({"-webkit-user-select":"none","-moz-user-select":"none"});
+          $(this).css({"-webkit-user-select":"none","-moz-user-select":"none"});
           var cm=this;
           cm.id = !cm.id ? "menu_"+Math.floor (Math.random () * 100): cm.id;
           $(cm).css({cursor:"default"});
@@ -374,33 +375,33 @@
             });
 
             menuLine.mb_hover(
-                    op.options.submenuHoverIntent,
-                    function(event){
-                      if(opener.menuContainer.actualSubmenu && !$(voice).attr("menu")){
-                        $(opener.menu).find(".menuDiv").remove();
-                        $(opener.menuContainer.actualSubmenu).removeClass("selected");
-                        opener.menuContainer.actualSubmenu=false;
-                      }
-                      if ($(voice).attr("menu")){
-                        if(opener.menuContainer.actualSubmenu && opener.menuContainer.actualSubmenu!=this){
-                          $(opener.menu).find(".menuDiv").remove();
-                          $(opener.menuContainer.actualSubmenu).removeClass("selected");
-                          opener.menuContainer.actualSubmenu=false;
-                        }
-                        if (!$(voice).attr("action")) $(opener.menuContainer).find("#"+m+"_"+i).css("cursor","default");
-                        if (!opener.menuContainer.actualSubmenu || opener.menuContainer.actualSubmenu!=this){
-                          $(opener.menu).find(".menuDiv").remove();
+                op.options.submenuHoverIntent,
+                             function(event){
+                               if(opener.menuContainer.actualSubmenu && !$(voice).attr("menu")){
+                                 $(opener.menu).find(".menuDiv").remove();
+                                 $(opener.menuContainer.actualSubmenu).removeClass("selected");
+                                 opener.menuContainer.actualSubmenu=false;
+                               }
+                               if ($(voice).attr("menu")){
+                                 if(opener.menuContainer.actualSubmenu && opener.menuContainer.actualSubmenu!=this){
+                                   $(opener.menu).find(".menuDiv").remove();
+                                   $(opener.menuContainer.actualSubmenu).removeClass("selected");
+                                   opener.menuContainer.actualSubmenu=false;
+                                 }
+                                 if (!$(voice).attr("action")) $(opener.menuContainer).find("#"+m+"_"+i).css("cursor","default");
+                                 if (!opener.menuContainer.actualSubmenu || opener.menuContainer.actualSubmenu!=this){
+                                   $(opener.menu).find(".menuDiv").remove();
 
-                          opener.menuContainer.actualSubmenu=false;
-                          $(this).buildMbMenu(op,$(voice).attr("menu"),"sm",event);
-                          opener.menuContainer.actualSubmenu=this;
-                        }
-                        $(this).attr("isOpen","true");
-                        return false;
-                      }
-                    },
-                    function(){}
-                    );
+                                   opener.menuContainer.actualSubmenu=false;
+                                   $(this).buildMbMenu(op,$(voice).attr("menu"),"sm",event);
+                                   opener.menuContainer.actualSubmenu=this;
+                                 }
+                                 $(this).attr("isOpen","true");
+                                 return false;
+                               }
+                             },
+                             function(){}
+                );
           }
           if(isDisabled || isTitle || isText || isBoxmenu){
             $(this).removeAttr("href");
@@ -529,8 +530,8 @@
       if(!op) return;
       if (op.rootMenu) {
         $(op.actualOpenedMenu)
-                .removeAttr("isOpen")
-                .removeClass("selected");
+            .removeAttr("isOpen")
+            .removeClass("selected");
         $("[isOpen]").removeAttr("isOpen");
         $(op.rootMenu).css({width:1, height:1});
         if (fade) $(op.rootMenu).fadeOut(op.options.fadeOutTime,function(){$(this).remove();});
