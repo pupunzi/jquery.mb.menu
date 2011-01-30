@@ -266,6 +266,7 @@
       });
       if (!$("#"+m).html() || op.ajaxAlwaysReload){
         $("#"+m).remove();
+
         $.ajax({
           type: "POST",
           url: op.options.template,
@@ -585,3 +586,5 @@
   $.fn.buildMenu = $.mbMenu.buildMenu;
   $.fn.buildContextualMenu = $.mbMenu.buildContextualMenu;
 })(jQuery);
+
+parseFloat()
