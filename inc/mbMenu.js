@@ -74,7 +74,6 @@
            * for ex: class="rootVoice {menu:'menu_2'}"
            */
           if ($.metadata){
-            $.metadata.setType("class");
             thisMenu.menuvoice=$(this).find(".rootVoice");
             $(thisMenu.menuvoice).each(function(){
               if ($(this).metadata().menu) $(this).attr("menu",$(this).metadata().menu);
@@ -167,7 +166,6 @@
         thisMenu.menuvoice=false;
         var cMenuEls;
         if ($.metadata){
-          $.metadata.setType("class");
           cMenuEls= $(this).find(".cmVoice");
           $(cMenuEls).each(function(){
             if ($(this).metadata().cMenu) $(this).attr("cMenu",$(this).metadata().cMenu);
@@ -298,7 +296,6 @@
        * for ex: class="rootVoice {menu:'menu_2'}"
        */
       if ($.metadata){
-        $.metadata.setType("class");
         $(this.voices).each(function(){
           if ($(this).metadata().disabled) $(this).attr("isdisable",$(this).metadata().disabled);
           if ($(this).metadata().img) $(this).attr("img",$(this).metadata().img);
