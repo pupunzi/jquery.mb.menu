@@ -74,7 +74,7 @@
            * for ex: class="rootVoice {menu:'menu_2'}"
            */
           if ($.metadata){
-            $.metadata.setType("class");
+            
             thisMenu.menuvoice=$(this).find(".rootVoice");
             $(thisMenu.menuvoice).each(function(){
               if ($(this).metadata().menu) $(this).attr("menu",$(this).metadata().menu);
