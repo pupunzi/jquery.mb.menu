@@ -234,6 +234,7 @@
   function loadFlash(){
     $.ajax({
       url:"testFlash/test.html",
+			dataType:"html",
       success:function(html){
         $("#flashTest").html(html);
       }

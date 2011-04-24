@@ -273,6 +273,7 @@
           cache: false,
           async: false,
           data:"menuId="+m+(op.options.additionalData!=""?"&"+op.options.additionalData:""),
+					dataType:"html",
           success: function(html){
             $("body").append(html);
             $("#"+m).hide();
