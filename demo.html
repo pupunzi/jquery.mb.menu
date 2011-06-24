@@ -15,13 +15,11 @@
 <title>mbMenu</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<!--<script type="text/javascript" src="../jquery/jquery-1.5rc1.js"></script>-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="inc/jquery.metadata.js"></script>
 <script type="text/javascript" src="inc/jquery.hoverIntent.js"></script>
 <script type="text/javascript" src="inc/mbMenu.js"></script>
 
-<!--<link rel="stylesheet" type="text/css" href="css/menu_black.css" media="screen" />-->
 <link rel="stylesheet" type="text/css" href="css/menu_black.css" media="screen" />
 
 <style type="text/css">
@@ -100,14 +98,14 @@
   span.btn:hover{
     background-color:#000;
   }
-  
+
   .msgBox{
     position:absolute;
     width:250px;
     height:60px;
     background:black;
     -moz-box-shadow:#999 2px 0px 3px;
-    -webkit-box-shadow:#999 2px 0px 3px;    
+    -webkit-box-shadow:#999 2px 0px 3px;
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
     padding:10px;
@@ -260,8 +258,8 @@
     -moz-border-radius:  8px 0 0  8px;
     -webkit-border-top-right-radius:8px;
     -webkit-border-top-left-radius:8px;
-    -webkit-border-bottom-right-radius:0px;
-    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:0;
+    -webkit-border-bottom-left-radius:0;
 
   }
 
@@ -270,10 +268,6 @@
 <body bgcolor="#ffffff">
 <div class="wrapper">
   <h1>mb.menu.demo</h1>
-change css:
-
-  <button onclick="$('[rel=stylesheet]').attr('href','css/menu_red.css')">red</button>
-  <button onclick="$('[rel=stylesheet]').attr('href','css/menu_black.css')">black</button>
   <table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#EDEDED">
     <tr>
       <td width="180" height="33" style="padding:10px" class="style">
@@ -341,25 +335,25 @@ change css:
 
   <!-- menues -->
   <div id="menu_1" class="mbmenu">
-    <a rel="title" >title menu_1.1</a> <!-- menuvoice title-->
+    <a data-type="title" >title menu_1.1</a> <!-- menuvoice title-->
     <a href="http://patapage.com" class="{img: 'ico_view.gif'}" >menu_1.1 (href with target "_self") </a> <!-- menuvoice with href-->
     <a class="{action: 'showMessage(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
-    <a rel="separator"> </a> <!-- menuvoice separator-->
+    <a data-type="separator"> </a> <!-- menuvoice separator-->
     <a href="#" class="{action: 'showMessage(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
     <a class="{action: 'showMessage(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
   </div>
 
   <div id="menu_2" class="mbmenu">
-    <a rel="title" class="{action: 'showMessage(\'menu_2.1\')', img: 'icon_13.png'}">choose one of these links</a>
+    <a data-type="title" class="{action: 'showMessage(\'menu_2.1\')', img: 'icon_13.png'}">choose one of these links</a>
     <a class="{action: 'showMessage(\'menu_2.2\')'}">menu_2.2</a>
     <a class="{menu: 'sub_menu_1', img: 'icon_14.png', disabled:true}">menu_2.3 (disabled)</a>
     <a class="{menu: 'sub_menu_2', img: '24-tag-add.png'}">menu_2.4</a>
-    <a rel="separator"> </a>
+    <a data-type="separator"> </a>
     <a class="{action: 'showMessage(\'menu_2.4\')'}">menu_2.5</a>
   </div>
 
   <div id="menu_3" class="mbmenu" id="checkMenu">
-    <a rel="text">
+    <a data-type="text">
       <form>
         <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
         <input id="myInput" type="text" name="tuoTesto" value="you can have input inside" />
@@ -374,7 +368,7 @@ change css:
         <br/>* form fields value are not preserved once you close the menu!
       </form>
     </a>
-    <a rel="separator"> </a>
+    <a data-type="separator"> </a>
     <a class="{action: 'showMessage(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
     <a id="aaa" class="{menu:'sub_menu_2'}"  >submenu</a>
     <a class="{action: 'showMessage(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo menu_3.4 con testo veramente molto lungo</a>
@@ -382,7 +376,7 @@ change css:
 
   <div id="sub_menu_1" class="mbmenu">
     <a class="{action: 'showMessage(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
-    <a rel="separator"> </a>
+    <a data-type="separator"> </a>
     <a class="{menu:'menu_1'}">sub_menu_1.2</a>
     <a class="{action: 'showMessage(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
     <a class="{action: 'showMessage(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
@@ -392,17 +386,17 @@ change css:
     <a class="{action: 'showMessage(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" target="_blank" >sub_menu_2.1</a>
     <a href="http://google.com" class="{img: 'buttonfind.gif'}" target="_self" >sub_menu_2.2 (href target _self)</a>
     <a class="{action: 'showMessage(\'sub_menu_2.3\')'}">sub_menu_2.3</a>
-    <a rel="separator"> </a>
+    <a data-type="separator"> </a>
     <a class="{action: 'showMessage(\'sub_menu_2.4\')'}">sub_menu_2.4</a>
     <a class="{action: 'showMessage(\'sub_menu_2.5\')'}" >sub_menu_2.5</a>
   </div>
 
   <div id="conext_menu_1" class="mbmenu">
-    <a rel="text" >
+    <a data-type="text" >
       <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
       <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
     </a>
-    <a rel="separator"> </a>
+    <a data-type="separator"> </a>
     <a class="{action: 'testForContextMenu()',img: 'iconDone.png'}" >test: get opener ID</a>
     <a id="bbb" class="{menu:'sub_menu_2'}" >submenu</a>
     <a class="{action: 'showMessage(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>

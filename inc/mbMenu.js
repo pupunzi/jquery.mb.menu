@@ -315,13 +315,13 @@
         var voice=this;
         var imgPlace="";
 
-        var isText=$(voice).attr("rel")=="text";
-        var isTitle=$(voice).attr("rel")=="title";
+        var isText=$(voice).data("type")=="text";
+        var isTitle=$(voice).data("type")=="title";
         var isDisabled=$(voice).is("[isdisable]");
         if(!op.rootMenu && $(opener).attr("isDisable"))
           isDisabled=true;
 
-        var isSeparator=$(voice).attr("rel")=="separator";
+        var isSeparator=$(voice).data("type")=="separator";
 
         // boxMenu SUGGESTED by Sven Dowideit
         if (op.options.hasImages && !isText && !isBoxmenu){
