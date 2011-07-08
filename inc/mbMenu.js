@@ -419,8 +419,6 @@
             menuLine.find("a").css("cursor","pointer").click(function(){$.fn.removeMbMenu($.mbMenu.options.actualMenuOpener,true);})
           }
           menuLine.bind("click",function(event){
-            console.debug(event.type)
-
             if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled &&  !isBoxmenu && !isText){
               var target=$(voice).attr("target")?$(voice).attr("target"):"_self";
               if ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1){
