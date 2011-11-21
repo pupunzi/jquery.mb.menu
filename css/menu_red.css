@@ -90,8 +90,8 @@ body{
   -moz-box-shadow:#999 2px 5px 10px;
   -webkit-box-shadow:#999 2px 5px 10px;
   -moz-border-radius: 0 0 8px 8px;
-  -webkit-border-top-right-radius:0px;
-  -webkit-border-top-left-radius:0px;
+  -webkit-border-top-right-radius:0;
+  -webkit-border-top-left-radius:0;
   -webkit-border-bottom-right-radius:8px;
   -webkit-border-bottom-left-radius:8px;
 }
