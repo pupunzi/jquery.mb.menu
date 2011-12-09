@@ -1,0 +1,37 @@
+{
+  "name": "mb.menu",
+  "version": "2.8.9b1",
+  "title": "jquery.mb.menu",
+  "author": {
+    "name": "Matteo Bicocchi",
+    "url": "http://pupunzi.open-lab.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "licenses/MIT-LICENSE.txt"
+    },
+    {
+      "type": "GPL",
+      "url": "licenses/GPL-LICENSE.txt"
+    }
+  ],
+  "dependencies": {
+    "jquery": "1.x",
+    "hoverIntent":"http://cherne.net/brian/resources/jquery.hoverIntent.html",
+    "metadata":"https://github.com/jquery/jquery-metadata/blob/master/jquery.metadata.js"
+  },
+  "description": "This is a powerful jQuery component that let you build easily a multilevel tree menu or a contextual menu (right click) in an intuitive way!",
+  "keywords": [
+    "tree menu",
+    "navigation",
+    "menu",
+    "interface"
+  ],
+  "homepage": "http://pupunzi.open-lab.com/mb-jquery-components/mb-_menu/",
+  "demo": "http://pupunzi.com/#mb.components/mb._menu/menu.html",
+  "documentation": "https://github.com/pupunzi/jquery.mb.menu/wiki",
+  "files": [
+    "mbMenu.js"
+  ]
+}

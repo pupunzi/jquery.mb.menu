@@ -107,6 +107,20 @@
 		font:20px/24px Arial, Helvetica, sans-serif;
 	}
 
+  .rootVoices td.rootVoice.custom.selected{
+    background: red;
+    padding:8px;
+    color:#ffffff;
+    cursor: pointer;
+    font-size:14px;
+    text-shadow:#660033 1px 1px 1px;
+    -moz-border-radius:  8px 0 0  8px;
+    -webkit-border-top-right-radius:8px;
+    -webkit-border-top-left-radius:8px;
+    -webkit-border-bottom-right-radius:0;
+    -webkit-border-bottom-left-radius:0;
+  }
+
 </style>
 
 <script type="text/javascript">
@@ -239,28 +253,7 @@
 	}
 
 </script>
-<style>
-	.rootVoices td.rootVoice.custom.selected{
-		background: red;
-		padding:8px;
-		color:#ffffff;
-		cursor: pointer;
-		font-size:14px;
-		text-shadow:#660033 1px 1px 1px;
-		-moz-border-radius:  8px 0 0  8px;
-		-webkit-border-top-right-radius:8px;
-		-webkit-border-top-left-radius:8px;
-		-webkit-border-bottom-right-radius:0;
-		-webkit-border-bottom-left-radius:0;
-	}
-\
-		/*
-	 .menuDiv{
-		 left:10px !important;
-	 }
-	 */
 
-</style>
 </head>
 <body bgcolor="#ffffff">
 <div class="wrapper">
@@ -427,11 +420,7 @@
 			</tr>
 		</table>
 	</div>
-
-	<script type="text/javascript">
-		//    $("#box_menu a").click(function(){$.fn.removeMbMenu($.mbMenu.options.actualMenuOpener);})
-	</script>
-
+  
 	<!-- end menus -->
 
 </div>
