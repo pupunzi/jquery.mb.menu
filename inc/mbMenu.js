@@ -561,7 +561,7 @@
 			var zi=10;
 			var els= zIndexContext && zIndexContext!="auto" ? $(zIndexContext):$("*");
 			els.not(".alwaysOnTop").each(function() {
-				if($(this).css("position")=="absolute" || $(this).css("position")=="fixed"){
+				if(!$(this).css("position")=="static"){
 					var cur = parseInt($(this).css('zIndex'));
 					zi = cur > zi ? parseInt($(this).css('zIndex')) : zi;
 				}
