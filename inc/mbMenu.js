@@ -308,7 +308,6 @@
 				});
 			}
 
-
 			// build each voices of the menu
 			$(this.voices).each(function(i){
 
