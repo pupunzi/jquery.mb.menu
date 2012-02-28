@@ -448,7 +448,7 @@
 				});
 			}
 
-			//positioning opened
+			//positioning opened - todo: manage fixed position.
 			var t=0,l=0;
 			$(this.menuContainer).css({
 				minWidth:op.options.menuWidth
@@ -458,7 +458,6 @@
 			switch(type){
 				case "sm":
 					t=$(this).position().top+op.options.submenuTop;
-
 					l=$(this).position().left+$(this).width()-op.options.submenuLeft;
 					break;
 				case "cm":
@@ -498,6 +497,7 @@
 
 			var actualX=$(where.find(".menuDiv:first")).offset().left-$(window).scrollLeft();
 			var actualY=$(where.find(".menuDiv:first")).offset().top-$(window).scrollTop();
+
 			switch(type){
 				case "sm":
 					if ((actualX+mw)>= ww && mw<ww){
@@ -582,8 +582,8 @@
 				});
 		}
 	});
+
 	$.fn.buildMenu = $.mbMenu.buildMenu;
 	$.fn.buildContextualMenu = $.mbMenu.buildContextualMenu;
-})(jQuery);
 
-parseFloat()
+})(jQuery);

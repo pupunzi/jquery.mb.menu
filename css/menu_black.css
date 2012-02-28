@@ -32,10 +32,10 @@ body{
 }
 .rootVoices td.rootVoice {
   vertical-align:middle;
-/*background-color:#fff;*/
+  /*background-color:#fff;*/
   width:120px;
   font-family:Arial,Helvetica,sans-serif;
-  text-shadow:#fff 1px 1px 1px;  
+  text-shadow:#fff 1px 1px 1px;
   color: gray;
   font-size:14px;
   line-height:18px;
@@ -85,7 +85,7 @@ body{
 /**/
 
 .menuContainer{
-/*overflow:hidden;*/
+  overflow:hidden;
   position:absolute;
   background-color:gray;
   border-top:5px solid black;
@@ -120,7 +120,7 @@ body{
   background-color:black;
   font-family:Arial,Helvetica,sans-serif;
   font-size:14px;
-/*border-bottom:1px solid black;*/
+  /*border-bottom:1px solid black;*/
 }
 .menuContainer.disabled .line.title {
   background-color:#999;
