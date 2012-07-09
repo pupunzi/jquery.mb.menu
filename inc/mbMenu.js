@@ -585,4 +585,3 @@
 	$.fn.buildContextualMenu = $.mbMenu.buildContextualMenu;
 })(jQuery);
 
-parseFloat()
