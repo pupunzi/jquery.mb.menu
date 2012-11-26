@@ -21,7 +21,7 @@
 	$.mbMenu = {
 		name:"mbMenu",
 		author:"Matteo Bicocchi",
-		version:"2.8.9rc5",
+		version:"2.8.9",
 		actualMenuOpener:false,
 		options: {
 			template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
