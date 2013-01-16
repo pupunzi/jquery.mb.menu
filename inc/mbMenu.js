@@ -14,17 +14,26 @@
  *  http://www.opensource.org/licenses/mit-license.php
  *  http://www.gnu.org/licenses/gpl.html
  *
- *  last modified: 04/01/13 17.13
+ *  last modified: 16/01/13 19.40
  *  *****************************************************************************
  */
 
 // to get the element that is fireing a contextMenu event you have $.mbMenu.lastContextMenuEl that returns an object.
 
+
+/*Browser detection patch*/
+jQuery.browser = {};
+jQuery.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase());
+jQuery.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+jQuery.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+jQuery.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+
+
 (function($) {
 	$.mbMenu = {
 		name:"mbMenu",
 		author:"Matteo Bicocchi",
-		version:"2.8.9rc5",
+		version:"2.9",
 		actualMenuOpener:false,
 		options: {
 			template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
