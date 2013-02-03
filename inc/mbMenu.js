@@ -14,7 +14,7 @@
  *  http://www.opensource.org/licenses/mit-license.php
  *  http://www.gnu.org/licenses/gpl.html
  *
- *  last modified: 16/01/13 22.49
+ *  last modified: 03/02/13 22.47
  *  *****************************************************************************
  */
 
@@ -29,7 +29,7 @@
 	$.mbMenu = {
 		name:"mbMenu",
 		author:"Matteo Bicocchi",
-		version:"2.9",
+		version:"2.9.1",
 		actualMenuOpener:false,
 		options: {
 			template:"yourMenuVoiceTemplate",// the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
