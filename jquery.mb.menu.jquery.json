@@ -1,0 +1,44 @@
+{
+	"name": "jquery.mb.menu",
+	"title": "jQuery mb.menu",
+	"description": "A powerful jQuery component that lets you easily build a multilevel menu or contextual menu (right click) in an intuitive way!<br>You can add as many sub menus as you want and if those are not defined in the page, the component will automatically get them via ajax from a specified template url.",
+
+	"keywords": [
+		"ui",
+		"menu",
+		"tree",
+		"multilevel",
+		"ajax"
+	],
+	"version": "2.9.1",
+	"author": {
+		"name": "Pupunzi (Matteo Bicocchi)",
+		"email": "matteo@open-lab.com",
+		"url": "http://pupunzi.com"
+	},
+	"maintainers": [
+		{
+			"name": "Pupunzi (Matteo Bicocchi)",
+			"email": "matteo@open-lab.com",
+			"url": "http://pupunzi.open-lab.com"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/pupunzi/jquery.mb.menu/blob/master/licenses/MIT-LICENSE.txt"
+		},
+		{
+			"type": "GPL",
+			"url": "https://github.com/pupunzi/jquery.mb.menu/blob/master/licenses/GPL-LICENSE.txt"
+		}
+	],
+	"bugs": "https://github.com/pupunzi/jquery.mb.menu/issues",
+	"homepage": "http://pupunzi.open-lab.com/mb-jquery-components/mb-_menu/",
+	"demo": "http://pupunzi.com/#mb.components/mb._menu/menu.html",
+	"docs": "https://github.com/pupunzi/jquery.mb.menu/wiki",
+	"download": "http://pupunzi.open-lab.com/mb-jquery-components/mb-_menu//",
+	"dependencies": {
+		"jquery": ">=1.8"
+	}
+}

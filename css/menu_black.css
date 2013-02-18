@@ -1,12 +1,21 @@
 /*
- * jquery.mb.components
- * Copyright (c) 2001-2011. Matteo Bicocchi (Pupunzi); Open lab srl, Firenze - Italy
- * email: mbicocchi@open-lab.com
- * site: http://pupunzi.com
+ * ******************************************************************************
+ *  jquery.mb.components
+ *  file: menu_black.css
  *
- * Licences: MIT, GPL
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
+ *  Copyright (c) 2001-2013. Matteo Bicocchi (Pupunzi);
+ *  Open lab srl, Firenze - Italy
+ *  email: matteo@open-lab.com
+ *  site: 	http://pupunzi.com
+ *  blog:	http://pupunzi.open-lab.com
+ * 	http://open-lab.com
+ *
+ *  Licences: MIT, GPL
+ *  http://www.opensource.org/licenses/mit-license.php
+ *  http://www.gnu.org/licenses/gpl.html
+ *
+ *  last modified: 04/01/13 17.13
+ *  *****************************************************************************
  */
 
 /*
@@ -32,10 +41,10 @@ body{
 }
 .rootVoices td.rootVoice {
   vertical-align:middle;
-/*background-color:#fff;*/
+  /*background-color:#fff;*/
   width:120px;
   font-family:Arial,Helvetica,sans-serif;
-  text-shadow:#fff 1px 1px 1px;  
+  text-shadow:#fff 1px 1px 1px;
   color: gray;
   font-size:14px;
   line-height:18px;
@@ -85,7 +94,7 @@ body{
 /**/
 
 .menuContainer{
-/*overflow:hidden;*/
+  overflow:hidden;
   position:absolute;
   background-color:gray;
   border-top:5px solid black;
@@ -120,7 +129,7 @@ body{
   background-color:black;
   font-family:Arial,Helvetica,sans-serif;
   font-size:14px;
-/*border-bottom:1px solid black;*/
+  /*border-bottom:1px solid black;*/
 }
 .menuContainer.disabled .line.title {
   background-color:#999;
