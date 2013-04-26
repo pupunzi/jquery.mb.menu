@@ -48,6 +48,17 @@
 			submenuLeft:4,
 			opacity:1,
 			ajaxAlwaysReload:false,
+			menuFetcher: function(op, m, callback){
+				$.ajax({
+					type: "POST",
+					url: op.options.template,
+					cache: false,
+					async: false,
+					data:"menuId="+m+(op.options.additionalData!=""?"&"+op.options.additionalData:""),
+					dataType:"html",
+					success: callback
+				});
+			},
 			openOnClick:true,
 			closeOnMouseOut:false,
 			closeAfter:500,
@@ -272,20 +283,11 @@
 				position:"absolute",
 				opacity:op.options.opacity
 			});
-			if (!$("#"+m).html() || op.ajaxAlwaysReload){
+			if (!$("#"+m).html() || op.options.ajaxAlwaysReload){
 				$("#"+m).remove();
-
-				$.ajax({
-					type: "POST",
-					url: op.options.template,
-					cache: false,
-					async: false,
-					data:"menuId="+m+(op.options.additionalData!=""?"&"+op.options.additionalData:""),
-					dataType:"html",
-					success: function(html){
-						$("body").append(html);
-						$("#"+m).hide();
-					}
+				op.options.menuFetcher(op, m, function(html){
+					$("body").append(html);
+					$("#"+m).hide();
 				});
 			}
 			$(this.menuContainer).attr("id", "mb_"+m).hide();
