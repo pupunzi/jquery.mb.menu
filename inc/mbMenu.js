@@ -59,6 +59,9 @@
 					success: callback
 				});
 			},
+			cloner: function(op, m, source) {
+				return source.clone(true);
+			},
 			openOnClick:true,
 			closeOnMouseOut:false,
 			closeAfter:500,
@@ -296,12 +299,12 @@
 			var isBoxmenu=$("#"+m).hasClass("boxMenu");
 
 			if (isBoxmenu) {
-				this.voices = $("#"+m).clone(true);
+				this.voices = op.options.cloner(op, m, $("#"+m));
 				this.voices.css({display: "block"});
 				this.voices.attr("id", m+"_clone");
 			} else {
 				//TODO this will break <a rel=text> - if there are nested a's
-				this.voices= $("#"+m).find("a").clone(true);
+				this.voices= op.options.cloner(op, m, $("#"+m).find("a"));
 			}
 
 			/*
