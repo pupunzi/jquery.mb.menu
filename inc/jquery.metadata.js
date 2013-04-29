@@ -1,3 +1,4 @@
+
 /*
  * ******************************************************************************
  *  jquery.mb.components
@@ -14,7 +15,7 @@
  *  http://www.opensource.org/licenses/mit-license.php
  *  http://www.gnu.org/licenses/gpl.html
  *
- *  last modified: 25/04/13 22.58
+ *  last modified: 29/04/13 22.35
  *  *****************************************************************************
  */
 

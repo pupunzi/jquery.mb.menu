@@ -10,7 +10,7 @@
 		"multilevel",
 		"ajax"
 	],
-	"version": "2.9.5",
+	"version": "2.9.6",
 	"author": {
 		"name": "Pupunzi (Matteo Bicocchi)",
 		"email": "matteo@open-lab.com",
@@ -40,7 +40,7 @@
 	"download": "http://pupunzi.open-lab.com/mb-jquery-components/mb-_menu//",
 	"dependencies": {
 		"jquery": "1.8",
-		"hoverIntent":"http://cherne.net/brian/resources/jquery.hoverIntent.html",
-		"metadata":"https://github.com/jquery/jquery-metadata/blob/master/jquery.metadata.js"
+		"hoverIntent":"1.x",
+		"metadata":"1.x"
 	}
 }
