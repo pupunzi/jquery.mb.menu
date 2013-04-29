@@ -14,7 +14,7 @@
   ~  http://www.opensource.org/licenses/mit-license.php
   ~  http://www.gnu.org/licenses/gpl.html
   ~
-  ~  last modified: 25/04/13 22.58
+  ~  last modified: 29/04/13 22.28
   ~  ******************************************************************************/
   -->
 
@@ -25,14 +25,12 @@
   <title>MB_menu</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 "></script>
   <script type="text/javascript" src="inc/jquery.metadata.js"></script>
   <script type="text/javascript" src="inc/mbMenu.js"></script>
-  <script type="text/javascript" src="inc/styleswitch.js"></script>
   <script type="text/javascript" src="inc/jquery.hoverIntent.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/menu_black.css" title="styles1"  media="screen" />
-  <link rel="alternate stylesheet" type="text/css" href="css/menu_red.css" title="styles2" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/menu_red.css" title="styles1"  media="screen" />
 
   <style type="text/css">
     body .style a{
@@ -87,8 +85,8 @@
         menuWidth:250,
         openOnRight:false,
         menuSelector: ".menuContainer",
-        iconPath:"images/",
-        hasImages:false,
+        iconPath:"ico/",
+        hasImages:true,
         fadeInTime:300,
         fadeOutTime:100,
         adjustLeft:2,
@@ -122,10 +120,6 @@
 
   <table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#EDEDED" >
     <tr>
-      <td width="180" height="33" style="padding:10px" class="style">
-        <a href="#" rel="styles1" class="styleswitch">style 1</a> /
-        <a href="#" rel="styles2" class="styleswitch">style 2</a>
-      </td>
       <td valign="bottom">
         <table  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="container">
           <tr>
@@ -153,29 +147,29 @@
 
 <!-- menues -->
 <div id="menu_1" class="menu">
-  <a rel="title" >title menu_1.1</a> <!-- menuvoice title-->
+  <a data-type="title" >title menu_1.1</a> <!-- menuvoice title-->
   <a href="#" class="{img: 'ico_view.gif'}" >menu_1.1 (href target _self) </a> <!-- menuvoice with href-->
   <a class="{action: 'document.title=(\'menu_1.2\')'}" >menu_1.2</a> <!-- menuvoice with js action-->
-  <a rel="separator"> </a> <!-- menuvoice separator-->
+  <a data-type="separator"> </a> <!-- menuvoice separator-->
   <a href="#" class="{action: 'document.title=(\'menu_1.3\')', disabled:true}">menu_1.3</a> <!-- menuvoice disabled-->
   <a class="{action: 'document.title=(\'menu_1.4\')', menu:'menu_1', img: '24-book-blue-check.png'}">menu_1.4</a><!-- menuvoice with js action, image and submenu-->
 </div>
 
 <div id="menu_2" class="menu">
-  <a rel="title" class="{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'}">menu_2.1 TITLE</a>
+  <a data-type="title" class="{action: 'document.title=(\'menu_2.1\')', img: 'icon_13.png'}">menu_2.1 TITLE</a>
   <a class="{action: 'document.title=(\'menu_2.2\')'}">menu_2.2</a>
   <a class="{menu: 'sub_menu_1', img: 'icon_14.png'}">menu_2.3</a>
   <a class="{menu: 'sub_menu_2', img: '24-tag-add.png'}">menu_2.4</a>
-  <a rel="separator"> </a>
+  <a data-type="separator"> </a>
   <a class="{action: 'document.title=(\'menu_2.4\')'}">menu_2.5</a>
 </div>
 
 <div id="menu_3" class="menu">
-  <a rel="text" >
+  <a data-type="text" >
     <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
     <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
   </a>
-  <a rel="separator"> </a>
+  <a data-type="separator"> </a>
   <a class="{action: 'document.title=(\'menu_3.1\')', img: 'iconDone.png'}">menu_3.1</a>
   <a id="aaa" class="{menu:'sub_menu_2'}"  >submenu</a>
   <a class="{action: 'document.title=(\'menu_3.4\')'}">menu_3.4 con testo veramente molto lungo</a>
@@ -183,7 +177,7 @@
 
 <div id="sub_menu_1" class="menu">
   <a class="{action: 'document.title=(\'sub_menu_1.1\')'}">sub_menu_1.1</a>
-  <a rel="separator"> </a>
+  <a data-type="separator"> </a>
   <a class="{menu:'menu_1'}">sub_menu_1.2</a>
   <a class="{action: 'document.title=(\'sub_menu_1.3\')', img: 'bgColor.gif'}">sub_menu_1.3</a>
   <a class="{action: 'document.title=(\'sub_menu_1.4\')',img: 'Applet.gif'}">sub_menu_1.4</a>
@@ -192,18 +186,18 @@
 <div id="sub_menu_2" class="menu">
   <a class="{action: 'document.title=(\'sub_menu_2.1\')', img: 'buttonfind.gif'}" >sub_menu_2.1</a>
   <a class="{action: 'document.title=(\'sub_menu_2.2\')'}">sub_menu_2.2</a>
-  <a rel="separator"> </a>
+  <a data-type="separator"> </a>
   <a class="{action: 'document.title=(\'sub_menu_2.3\')'}">sub_menu_2.3</a>
   <a class="{action: 'document.title=(\'sub_menu_2.4\')'}" >sub_menu_2.4</a>
 </div>
 
 
 <div id="conext_menu_1" class="menu">
-  <a rel="text" >
+  <a data-type="text" >
     <img src="images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
     <br/>immagini che vuoi ed altro testo che ti pare Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi felis leo, consequat et, lacinia a, facilisis sit amet,<br/><br/>
   </a>
-  <a rel="separator"> </a>
+  <a data-type="separator"> </a>
   <a class="{action: 'testForContextMenu()',img: 'iconDone.png'}" >test: get opener ID</a>
   <a id="bbb" class="{menu:'sub_menu_2'}" >submenu</a>
   <a class="{action: 'document.title=(\'conext_menu_1.4\')'}" >conext_menu_1.4 con testo veramente molto lungo</a>
