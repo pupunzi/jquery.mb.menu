@@ -1,7 +1,7 @@
 /*
  * ******************************************************************************
  *  jquery.mb.components
- *  file: menu_black.css
+ *  file: menu_flat.css
  *
  *  Copyright (c) 2001-2014. Matteo Bicocchi (Pupunzi);
  *  Open lab srl, Firenze - Italy
@@ -29,23 +29,23 @@
 body{
   font-family:"Lucida Sans Unicode","Lucida Grande",Helvetica,Arial,sans-serif;
   font-size:14px;
-  color:gray;
+  color: #383838;
 }
 .mbmenu{
   display:none;
 }
 .rootVoices{
-  background-color:#EDEDED;
+  background-color: transparent;
   padding:5px;
   padding-bottom:0;
 }
+
 .rootVoices td.rootVoice {
   vertical-align:middle;
-  /*background-color:#fff;*/
   width:120px;
   font-family:Arial,Helvetica,sans-serif;
   text-shadow:#fff 1px 1px 1px;
-  color: gray;
+  color: #454545;
   font-size:14px;
   line-height:18px;
   padding:8px;
@@ -53,100 +53,67 @@ body{
 }
 
 .rootVoices td.rootVoice.selected{
-  background: black url("../images/bgnd_sel_4.png");
+  background: #e4a51b;
   padding:8px;
   color:#ffffff;
   cursor: pointer;
   font-size:14px;
-  text-shadow:#660033 1px 1px 1px;
-  -moz-border-radius:8px 8px 0 0px;
-  -webkit-border-top-right-radius:8px;
-  -webkit-border-top-left-radius:8px;
-  -webkit-border-bottom-right-radius:0px;
-  -webkit-border-bottom-left-radius:0px;
-  border-top-right-radius:8px;
-  border-top-left-radius:8px;
-  border-bottom-right-radius:0;
-  border-bottom-left-radius:0;
-
+  text-shadow: rgba(56, 56, 56, 0.40) 1px 1px 1px;
 }
 .rootVoices td.rootVoice.disabled.selected{
-  background:#999!important;
-  color:#666;
+  background: rgba(111, 111, 111, 0.49) !important;
+  color: #ffffff;
   text-shadow:#ddd 1px 1px 1px;
 }
 
 .rootVoices.vertical {
   width:140px;
 }
-.rootVoices.vertical td.rootVoice{
-  -moz-border-radius:8px 0px 0 8px;
-  -webkit-border-top-right-radius:0px;
-  -webkit-border-top-left-radius:8px;
-  -webkit-border-bottom-right-radius:0px;
-  -webkit-border-bottom-left-radius:8px;
-  border-top-right-radius:0px;
-  border-top-left-radius:8px;
-  border-bottom-right-radius:0px;
-  border-bottom-left-radius:8px;
-}
+.rootVoices.vertical td.rootVoice{}
 
 /**/
 
 .menuContainer{
-  overflow:hidden;
+  /*overflow:hidden;*/
   position:absolute;
-  background-color:gray;
-  border-top:5px solid black;
+  background-color: #e4a51b;
   padding:0;
-  -moz-box-shadow:#999 2px 2px 10px;
-  -webkit-box-shadow:#999 2px 2px 10px;
-  box-shadow:#999 2px 2px 10px;
-
-  -moz-border-radius: 0 0 8px 8px;
-  -webkit-border-top-right-radius:0px;
-  -webkit-border-top-left-radius:0px;
-  -webkit-border-bottom-right-radius:8px;
-  -webkit-border-bottom-left-radius:8px;
-  border-top-right-radius:0px;
-  border-top-left-radius:0px;
-  border-bottom-right-radius:8px;
-  border-bottom-left-radius:8px;
+  box-shadow: rgba(153, 153, 153, 0.35) 1px 1px 5px;
 }
+
 .menuContainer.submenuContainer{
   border-top:none!important;
 }
 
 .menuContainer.disabled{
-  border-top:5px solid #999;
-  background-color:gray;
+  background: rgba(111, 111, 111, 0.49) !important;
 }
 .menuContainer .line{
   background-color:transparent;
   width:100%;
 }
 .menuContainer .line.title {
-  background-color:black;
+  background-color: #b38018;
   font-family:Arial,Helvetica,sans-serif;
   font-size:14px;
   /*border-bottom:1px solid black;*/
 }
 .menuContainer.disabled .line.title {
-  background-color:#999;
+  background: rgba(111, 111, 111, 0.49) !important;
 }
 .menuContainer .line.title a{
   font-size:14px;
-  color:#ccc;
+  color: #ffffff;
 }
 .menuContainer.disabled .line.title a{
   font-size:14px;
-  color:#666;
+  color: #ffffff;
   text-shadow:#999 1px 1px 1px;
 }
 .menuContainer td a{
   text-decoration:none;
-  color:#f3f3f3;
-  text-shadow:#666 1px 1px 1px;
+  color: #ffffff;
+  text-shadow: rgba(0, 0, 0, 0.36) 0px 0px 1px;
   display:block;
   height:100%;
 }
@@ -155,17 +122,26 @@ body{
   font-size:14px;
   padding:7px;
 }
+
 .menuContainer .separator{
-  background-color:#999;
+  background-color: #f4b11b;
   height:1px;
   padding:0;
   margin:0;
 }
+
+.menuContainer.disabled .separator{
+  background-color: rgba(111, 111, 111, 0.58);
+  height:1px;
+  padding:0;
+  margin:0;
+}
+
 .menuContainer td.img{
   font-family:Arial,Helvetica,sans-serif;
   text-align:center;
   font-size:12px;
-  color: #c3c3c3;
+  color: #ffffff;
   background-color:transparent;
   width:24px;
   padding:5px;
@@ -177,20 +153,18 @@ body{
   padding: 10px;
   font-family:Arial,Helvetica,sans-serif;
   font-size:12px;
-  color: #c3c3c3;
+  color: #ffffff;
 }
 .menuContainer .selected td{
-  background-color:#f3f3f3;
-  background-image:url("../images/bgnd_sel_2.jpg")
 }
 .menuContainer .selected td a{
   color:#000;
-  text-shadow:#fff 2px 2px 1px;
+  text-shadow: rgba(255, 255, 255, 0.36) 0px 0px 1px;
   display:block;
 }
 .menuContainer .disabled td, .menuContainer .disabled td a {
-  color:#555;
-  text-shadow:#999 1px 1px 1px;
+  color: rgba(85, 85, 85, 0.36);
+  text-shadow: rgba(102, 103, 103, 0.53) 0px 0px 1px;
 }
 .menuContainer .subMenuOpener{
   background-image:url("../images/menuArrow_w.gif");
@@ -207,7 +181,6 @@ body{
 
 .boxMenu{
   color:#f3f3f3;
-  border-top:8px solid black;
   background:url("../images/box_top.png") repeat-x;
 }
 .boxMenu h4{
@@ -216,7 +189,7 @@ body{
   padding:3px;
   font:18px/20px georgia, serif;
   padding-right:20px;
-  text-shadow:#666 2px 2px 1px;
+  text-shadow: rgba(102, 103, 103, 0.53) 0px 0px 1px;
 }
 
 .boxMenu td{
@@ -225,14 +198,12 @@ body{
   border-right:1px solid #999;
 }
 .boxMenu td:hover{
-  background:url(../images/box_menu_over.png);
-  -moz-box-shadow:#666 2px 2px 4px;
-  -webkit-box-shadow:#666 2px 2px 4px;
-}
+  background: #FFF;
+  box-shadow: rgba(153, 153, 153, 0.35) 1px 1px 5px;}
 
 .boxMenu td:hover a{
   margin-right:3px;
-  text-shadow:#fff 1px 1px 1px;
+  text-shadow: rgba(255, 255, 255, 0.48) 0px 0px 1px;
   color:#000;
 }
 
@@ -256,11 +227,9 @@ body{
 
 .boxMenu a:hover{
   color:#000;
-  text-shadow:#fff 2px 2px 1px;
+  text-shadow: rgba(255, 255, 255, 0.44) 0px 0px 1px;
   background-image:url("../images/bgnd_sel_2.jpg");
-  -moz-box-shadow:#666 2px 2px 4px;
-  -webkit-box-shadow:#666 2px 2px 4px;
-}
+  box-shadow: rgba(153, 153, 153, 0.35) 1px 1px 5px;}
 
 .boxMenu a img{
   border:0;
