@@ -1,37 +1,48 @@
 {
-  "name": "mb.menu",
-  "version": "2.8.9b1",
-  "title": "jquery.mb.menu",
-  "author": {
-    "name": "Matteo Bicocchi",
-    "url": "http://pupunzi.open-lab.com"
-  },
+  "name": "jquery.mb.menu",
+  "title": "jQuery mb.menu",
+  "description": "A powerful jQuery component that lets you easily build a multilevel menu or contextual menu (right click) in an intuitive way!<br>You can add as many sub menus as you want and if those are not defined in the page, the component will automatically get them via ajax from a specified template url.",
+  "keywords": [
+    "jquery-plugin",
+    "ui",
+    "menu",
+    "tree",
+    "multilevel",
+    "ajax"
+  ],
+  "version": "2.9.7",
+  "author": "Pupunzi <matteo@open-lab.com> (Matteo Bicocchi)",
+  "maintainers": [
+    "Pupunzi <matteo@open-lab.com> (Matteo Bicocchi)"
+  ],
   "licenses": [
     {
       "type": "MIT",
-      "url": "licenses/MIT-LICENSE.txt"
+      "url": "https://github.com/pupunzi/jquery.mb.menu/blob/master/licenses/MIT-LICENSE.txt"
     },
     {
       "type": "GPL",
-      "url": "licenses/GPL-LICENSE.txt"
+      "url": "https://github.com/pupunzi/jquery.mb.menu/blob/master/licenses/GPL-LICENSE.txt"
     }
   ],
-  "dependencies": {
-    "jquery": "1.x",
-    "hoverIntent":"http://cherne.net/brian/resources/jquery.hoverIntent.html",
-    "metadata":"https://github.com/jquery/jquery-metadata/blob/master/jquery.metadata.js"
+  "bugs": {
+    "url": "https://github.com/pupunzi/jquery.mb.menu/issues"
   },
-  "description": "This is a powerful jQuery component that let you build easily a multilevel tree menu or a contextual menu (right click) in an intuitive way!",
-  "keywords": [
-    "tree menu",
-    "navigation",
-    "menu",
-    "interface"
-  ],
   "homepage": "http://pupunzi.open-lab.com/mb-jquery-components/mb-_menu/",
   "demo": "http://pupunzi.com/#mb.components/mb._menu/menu.html",
-  "documentation": "https://github.com/pupunzi/jquery.mb.menu/wiki",
-  "files": [
-    "mbMenu.js"
-  ]
+  "docs": "https://github.com/pupunzi/jquery.mb.menu/wiki",
+  "download": "http://pupunzi.open-lab.com/mb-jquery-components/mb-_menu//",
+  "dependencies": {
+    "jquery": ">=1.8",
+    "hoverIntent": "1.x",
+    "metadata": "1.x"
+  },
+  "main": "inc/mbMenu.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pupunzi/jquery.mb.menu.git"
+  }
 }
