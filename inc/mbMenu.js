@@ -111,8 +111,8 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 					$(thisMenu.menuvoice).css("white-space","nowrap");
 
 					if(openOnClick){
-						$(thisMenu.menuvoice).bind("click",function(){
-							$(document).unbind("click.closeMbMenu");
+						$(thisMenu.menuvoice).on("click",function(){
+							$(document).off("click.closeMbMenu");
 							if (!$(this).attr("isOpen")){
 								$(this).buildMbMenu(thisMenu,$(this).attr("menu"));
 								$(this).attr("isOpen","true");
@@ -128,7 +128,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 								}
 								$(this).removeMbMenu(thisMenu);
 							}
-							$(document).unbind("click.closeMbMenu");
+							$(document).off("click.closeMbMenu");
 						});
 					}
 
@@ -137,7 +137,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 							function(){
 								if(!$(this).attr("isOpen"))
 									$("[isOpen]").removeAttr("isOpen");
-								$(document).unbind("click.closeMbMenu");
+								$(document).off("click.closeMbMenu");
 								if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
 								if (!openOnClick) $(thisMenu).find(".selected").removeClass("selected");
 								if(thisMenu.actualOpenedMenu){ $(thisMenu.actualOpenedMenu).removeClass("selected");}
@@ -155,7 +155,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 								if (closeOnMouseOut)
 									$.mbMenu.deleteOnMouseOut= setTimeout(function(){
 										$(this).removeMbMenu(thisMenu,true);
-										$(document).unbind("click.closeMbMenu");
+										$(document).off("click.closeMbMenu");
 									},$(root)[0].options.closeAfter);
 
 								if ($(this).attr("menu")=="empty"){
@@ -204,7 +204,8 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 					$(cm).css({cursor:"default"});
 					//var evt= $.browser.opera?"dblclick":"contextmenu";
 					var evt= "contextmenu";
-					$(cm).bind(evt,"mousedown",function(event){
+					$(cm).on(evt,function(event){
+
 						event.preventDefault();
 						event.stopPropagation();
 						event.cancelBubble=true;
@@ -279,7 +280,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 			}
 			this.menuContainer  = $(this.menu).find(op.options.menuSelector);
 
-			$(this.menuContainer).bind(mouseOver,function(){
+			$(this.menuContainer).on(mouseOver,function(){
 				$(opener).addClass("selected");
 			});
 			$(this.menuContainer).css({
@@ -379,12 +380,12 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 					if(!(isText || isTitle || isDisabled ||isBoxmenu)){
 						menuLine.css({cursor:"pointer"});
 
-						menuLine.bind("mouseover",function(){
+						menuLine.on("mouseover",function(){
 							clearTimeout($.mbMenu.deleteOnMouseOut);
 							$(this).addClass("selected");
 						});
 
-						menuLine.bind("mouseout",function(){
+						menuLine.on("mouseout",function(){
 							$(this).removeClass("selected");
 						});
 
@@ -419,7 +420,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 					}
 					if(isDisabled || isTitle || isText || isBoxmenu){
 						$(this).removeAttr("href");
-						menuLine.bind(mouseOver,function(){
+						menuLine.on(mouseOver,function(){
 							if (closeOnMouseOut) clearTimeout($.mbMenu.deleteOnMouseOut);
 							if(opener.menuContainer.actualSubmenu){
 								$(opener.menu).find(".menuDiv").remove();
@@ -430,7 +431,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 					if(isBoxmenu){
 						menuLine.find("a").css("cursor","pointer").click(function(){$.fn.removeMbMenu($.mbMenu.options.actualMenuOpener,true);})
 					}
-					menuLine.bind("click",function(event){
+					menuLine.on("click",function(event){
 						if (($(voice).attr("action") || $(voice).attr("href")) && !isDisabled &&  !isBoxmenu && !isText){
 							var target=$(voice).attr("target")?$(voice).attr("target"):"_self";
 							if ($(voice).attr("href") && $(voice).attr("href").indexOf("javascript:")>-1){
@@ -441,7 +442,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 							eval(link);
 							$(this).removeMbMenu(op,true);
 						}else{
-							$(document).unbind("click.closeMbMenu");
+							$(document).off("click.closeMbMenu");
 						}
 					});
 				}
@@ -451,12 +452,12 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 
 			var closeOnMouseOut=$(op)[0].options.closeOnMouseOut;
 			if (closeOnMouseOut){
-				$(opener.menuContainer).bind("mouseenter",function(){
+				$(opener.menuContainer).on("mouseenter",function(){
 					clearTimeout($.mbMenu.deleteOnMouseOut);
 				});
-				$(opener.menuContainer).bind("mouseleave",function(){
+				$(opener.menuContainer).on("mouseleave",function(){
 					var menuToRemove=$.mbMenu.options.actualMenuOpener;
-					$.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(menuToRemove,true);$(document).unbind("click.closeMbMenu");},$(op)[0].options.closeAfter);
+					$.mbMenu.deleteOnMouseOut= setTimeout(function(){$(this).removeMbMenu(menuToRemove,true);$(document).off("click.closeMbMenu");},$(op)[0].options.closeAfter);
 				});
 			}
 
@@ -494,7 +495,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 			});
 
 			if (!type || type=="cm") op.rootMenu=this.menu;
-			$(this.menuContainer).bind(mouseOut,function(){
+			$(this.menuContainer).on(mouseOut,function(){
 				$(document).one("click.closeMbMenu",function(){$(document).removeMbMenu(op,true);});
 			});
 
