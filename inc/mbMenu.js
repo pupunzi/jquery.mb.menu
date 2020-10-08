@@ -585,7 +585,7 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 		},
 		mb_hover:function(hoverIntent, fn1, fn2){
 			if(hoverIntent==0)
-				$(this).hover(fn1,fn2);
+				$(this).on('mouseenter', fn1).on('mouseleave', fn2);
 			else
 				$(this).hoverIntent({
 					sensitivity: 30,
