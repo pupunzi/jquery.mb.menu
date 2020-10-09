@@ -529,8 +529,11 @@ var nAgt=navigator.userAgent;if(!jQuery.browser){jQuery.browser={},jQuery.browse
 					}
 					break;
 			}
-			if ((actualY+mh)>= wh-10 && mh<wh){
-				t-=((actualY+mh)-wh)+10;
+			
+			if(op.options.openOnRight){
+				if ((actualY+mh)>= wh-10 && mh<wh){
+					t-=((actualY+mh)-wh)+10;
+				}
 			}
 
 			$(this.menu).css({
